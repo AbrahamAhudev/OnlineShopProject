@@ -1,0 +1,6 @@
+@OnlineShopProject.Server_HostAddress = http://localhost:5029
+
+GET {{OnlineShopProject.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

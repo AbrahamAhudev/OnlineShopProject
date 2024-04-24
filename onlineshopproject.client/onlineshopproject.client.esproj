@@ -8,6 +8,6 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\onlineshopproject.client\</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="src\Components\" />
+    <Folder Include="src\assets\images\" />
   </ItemGroup>
 </Project>

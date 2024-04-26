@@ -6,7 +6,10 @@ import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule} from './app-routing.module';
+import { provideRouter } from '@angular/router';
+import { routes } from './app-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -15,11 +18,14 @@ import { AppRoutingModule } from './app-routing.module';
     NavComponent,
     FooterComponent,
     HomeComponent
+
   ],
   imports: [
     BrowserModule, HttpClientModule, AppRoutingModule
   ],
-  providers: [],
+  providers: [provideRouter(routes)],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

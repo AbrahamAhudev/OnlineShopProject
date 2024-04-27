@@ -17,9 +17,10 @@ body {
 }
 
 .navbar {
-  background-color: #8ed2ff;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(118,182,235,1) 0%, rgba(172,222,251,1) 100%);
   display: flex;
-  border-bottom: 1px solid black;
+
   justify-content: center;
 }
 
@@ -30,5 +31,54 @@ body {
 
   .navbar li {
     list-style: none;
-    margin: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    
   }
+
+  .navbar a{
+      text-decoration: none;
+      
+  }
+
+  .navbar a:hover{
+      transition: 200ms;
+      font-size: 20px;
+  }
+
+  .active{
+      color: aliceblue;
+  }
+
+.main_content {
+  border-top: 1px solid black;
+  min-height: 770px;
+  background-color: rgb(146, 190, 216);
+  display: flex;
+  
+}
+
+.content {
+  text-align: center;
+  background-color: rgb(198, 232, 252);
+  width: 85%;
+}
+
+.sidebar {
+  border-left: 1px solid black;
+  text-align: center;
+  background: rgb(2,0,36);
+  background: linear-gradient(266deg, rgba(2,0,36,1) 0%, rgba(114,149,169,1) 0%, rgba(146,201,232,1) 100%);
+  width: 20%;
+}
+
+
+.footer {
+  line-height: 30px;
+  height: 60px;
+  background-color: #9fb7f2;
+  margin: auto;
+  padding: 0;
+  border-top: 1px solid black;
+ 
+}

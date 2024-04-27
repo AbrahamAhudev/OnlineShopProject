@@ -1,10 +1,15 @@
-
 <nav class="navbar">
 
   <ul>
-    <li>Home</li>
-    <li>Products</li>
-    <li>Contact</li>
+    <li>
+      <a [routerLink]="['/home']" [routerLinkActive]="['active']">Home</a>
+    </li>
+    <li>
+      <a [routerLink]="['/Products']" [routerLinkActive]="['active']">Products</a>
+    </li>
+    <li>
+      <a [routerLink]="['/Contact']" [routerLinkActive]="['active']">Contact</a>
+    </li>
   </ul>
 
 </nav>

@@ -8,6 +8,10 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\onlineshopproject.client\</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="src\Components\**" />
+    <TypeScriptConfiguration Remove="src\Components\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="src\assets\images\" />
   </ItemGroup>
 </Project>

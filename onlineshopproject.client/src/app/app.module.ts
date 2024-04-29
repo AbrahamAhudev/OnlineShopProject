@@ -9,6 +9,9 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule} from './app-routing.module';
 import { provideRouter } from '@angular/router';
 import { routes } from './app-routing.module';
+import { ProductsComponent } from './products/products.component';
+import { ContactComponent } from './contact/contact.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,11 +20,13 @@ import { routes } from './app-routing.module';
     HeaderComponent,
     NavComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    ProductsComponent,
+    ContactComponent
 
   ],
   imports: [
-    BrowserModule, HttpClientModule, AppRoutingModule
+    BrowserModule, HttpClientModule, AppRoutingModule, FormsModule
   ],
   providers: [provideRouter(routes)],
   bootstrap: [AppComponent]

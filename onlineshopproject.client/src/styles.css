@@ -36,9 +36,9 @@ body {
     
   }
 
-  .navbar a{
-      text-decoration: none;
-      
+  .navbar a {
+    text-decoration: none;
+    font-weight: bold; /* Hace que el texto esté en negrita */
   }
 
   .navbar a:hover{
@@ -46,9 +46,10 @@ body {
       font-size: 20px;
   }
 
-  .active{
-      color: aliceblue;
-  }
+.active {
+  text-shadow: 1px 3px 3px rgba(0,0,0,0.53);
+  color: aliceblue;
+}
 
 .main_content {
   border-top: 1px solid black;
@@ -72,11 +73,43 @@ body {
   width: 20%;
 }
 
+input[type="text"]{
+
+    background-color: #e4f2fe;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+button,
+input[type="button"]{
+    background-color: #ccd8e4;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+
+  button,
+  input[type="button"]:hover {
+    transition: 200ms;
+    background-color: #a9c0d4;
+  }
+
+
+  .sidebar div{
+      background-color: #a3c6e1;
+      border: 1px solid black;
+      margin: 13px;
+      padding: 10px;
+      border-radius: 10px;
+  }
 
 .footer {
   line-height: 30px;
   height: 60px;
-  background-color: #9fb7f2;
+  background-color: #99beeb;
   margin: auto;
   padding: 0;
   border-top: 1px solid black;

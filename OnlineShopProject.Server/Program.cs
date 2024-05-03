@@ -1,6 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using OnlineShopProject.Server.Data;
 using OnlineShopProject.Server;
+using OnlineShopProject.Server.Interfaces;
+using OnlineShopProject.Server.Repository;
+using MySql.Data;
+using Pomelo.EntityFrameworkCore.MySql;
+using System.Configuration;
+
 
 namespace OnlineShopProject.Server
 {
@@ -13,15 +19,20 @@ namespace OnlineShopProject.Server
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<IOrderRepository, OrderRepository>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            MySQLConfiguration mySQLConfiguration = new MySQLConfiguration();
-
+           
             builder.Services.AddDbContext<DataContext>(options =>
             {
-                options.UseSqlServer(builder.Configuration.GetConnectionString(mySQLConfiguration.ConnectionString));
+                var connetionString = builder.Configuration.GetConnectionString("DefaultConnection");
+                options.UseMySql(connetionString, ServerVersion.AutoDetect(connetionString));
             });
 
             var app = builder.Build();

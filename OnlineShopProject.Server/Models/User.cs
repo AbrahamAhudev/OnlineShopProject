@@ -15,7 +15,7 @@
 
         public string Address { get; set; }
 
-        public string Phone_number { get; set; }
+        public int Phone_number { get; set; }
 
     }
 

@@ -46,6 +46,8 @@ body {
       font-size: 20px;
   }
 
+
+
 .active {
   text-shadow: 1px 3px 3px rgba(0,0,0,0.53);
   color: aliceblue;
@@ -65,21 +67,26 @@ body {
   width: 85%;
 }
 
+
 .sidebar {
   border-left: 1px solid black;
   text-align: center;
   background: rgb(2,0,36);
   background: linear-gradient(266deg, rgba(2,0,36,1) 0%, rgba(114,149,169,1) 0%, rgba(146,201,232,1) 100%);
   width: 20%;
+  display: flex;
+  justify-content:center;
 }
 
-input[type="text"]{
+input[type="text"] {
 
-    background-color: #e4f2fe;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 15px;
-    margin: 10px;
+  background-color: #e4f2fe;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin: 10px;
+  min-width: 10px;
+  max-width: 120px;
 }
 
 button,
@@ -98,13 +105,27 @@ input[type="button"]{
   }
 
 
-  .sidebar div{
-      background-color: #a3c6e1;
-      border: 1px solid black;
-      margin: 13px;
-      padding: 10px;
-      border-radius: 10px;
+
+
+.sidebar div {
+  background-color: #a3c6e1;
+  border: 1px solid black;
+  margin: 13px;
+  padding: 30px;
+  border-radius: 10px;
+  max-height: 140px;
+  max-width: 200px;
+  min-width: 150px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none; /* Oculta la barra lateral en dispositivos más pequeños */
   }
+  .content{
+      width: 100%;
+  }
+}
 
 .footer {
   line-height: 30px;

@@ -17,24 +17,26 @@ namespace OnlineShopProject.Server.Repository
 
         public bool CreateUser(User user)
         {
-           _Context.Add(user);
+            _Context.Add(user);
 
             return Save();
         }
 
         public bool DeleteUser(User user)
         {
-            throw new NotImplementedException();
+            _Context.Remove(user);
+
+            return Save();
         }
 
         public User GetUserById(int id)
         {
-            throw new NotImplementedException();
+            return _Context.Users.Where(u => u.Id == id).FirstOrDefault();
         }
 
         public ICollection<User> GetUsers()
         {
-            throw new NotImplementedException();
+            return _Context.Users.ToList();
         }
 
         public bool Save()
@@ -46,12 +48,15 @@ namespace OnlineShopProject.Server.Repository
 
         public bool UpdateUser(User user)
         {
-            throw new NotImplementedException();
+            _Context.Update(user);
+
+            return Save();
         }
 
         public bool UserExists(int id)
         {
             return _Context.Users.Any(u => u.Id == id);
         }
+
     }
 }

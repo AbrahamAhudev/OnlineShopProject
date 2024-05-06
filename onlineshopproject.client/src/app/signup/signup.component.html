@@ -1,0 +1,61 @@
+<div class="main_content">
+
+    <div id="signup_container">
+
+      
+
+      <form class="signupform" #signupForm="ngForm" (ngSubmit)="onSubmit()">
+         <h1 style="font-size: 28px">Sign up</h1>
+
+
+         <div class="column">
+           <label>username *</label>
+           <input type="text" name="username" #username="ngModel" placeholder="Username" [ngModel]="User.Username" required />
+         </div> 
+ 
+
+        <div class="row">
+          <div>
+            <label>firstname *</label>
+            <input type="text" name="firstname" #firstname="ngModel" placeholder="FirstName" [ngModel]="User.FirstName"  required />
+          </div>
+          <div>
+            <label>lastname</label>
+            <input type="text" name="lastname" #lastname="ngModel" placeholder="LastName" [ngModel]="User.LastName" />
+          </div>
+        </div>
+
+        <div class="column">
+          <label>Address *</label>
+          <input type="text" name="address" #address="ngModel" placeholder="Address" [ngModel]="User.Address" required />
+        </div>
+
+        <div class="row">
+          <div>
+            <label>Email *</label>
+            <input type="text" name="email" #email="ngModel" placeholder="Email" [ngModel]="User.Email" required />
+          </div>
+          <div>
+            <label>Phone number</label>
+            <input type="text" name="phone_number" #phone_number="ngModel" placeholder="Phone Number" [ngModel]="User.Phone_Number" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label>Password *</label>
+            <input type="password" name="password" #password="ngModel" placeholder="Password"  [ngModel]="Password"  required />
+          </div>
+          <div>
+            <label>Confirm Password *</label>
+            <input type="password" name="confirmpassword" #confirmpassword="ngModel" placeholder="Confirm Password *" [ngModel]="ConfirmedPassword"  required />
+          </div>
+        </div>
+
+        <input type="submit" value="sign up" [disabled]="signupForm.invalid"/>
+
+      </form>
+
+    </div>
+
+</div>

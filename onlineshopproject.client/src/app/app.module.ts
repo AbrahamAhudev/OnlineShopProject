@@ -12,6 +12,9 @@ import { routes } from './app-routing.module';
 import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { ErrorComponent } from './error/error.component';
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     HomeComponent,
     ProductsComponent,
-    ContactComponent
+    ContactComponent,
+    LoginComponent,
+    SignupComponent,
+    ErrorComponent
 
   ],
   imports: [

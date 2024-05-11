@@ -17,5 +17,7 @@ namespace OnlineShopProject.Server.Interfaces
         bool DeleteUser(User user);
 
         bool Save();
+
+        string EncryptPassword(string password);
     }
 }

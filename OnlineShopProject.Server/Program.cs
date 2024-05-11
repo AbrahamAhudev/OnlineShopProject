@@ -20,7 +20,15 @@ namespace OnlineShopProject.Server
 
             builder.Services.AddControllers();
 
-
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AppPolicy", app =>
+                {
+                    app.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
@@ -48,6 +56,8 @@ namespace OnlineShopProject.Server
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors("AppPolicy");
 
             app.UseAuthorization();
 

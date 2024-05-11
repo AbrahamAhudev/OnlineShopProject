@@ -3,13 +3,13 @@ export class User {
 
 
   constructor(
-    public Username: string,
-    public FirstName: string,
-    public LastName: string | null,
-    public Password: string,
-    public Email: string,
-    public Address: string,
-    public Phone_Number: number | null
+    public username: string,
+    public firstName: string,
+    public lastName: string | null,
+    public password: string,
+    public email: string,
+    public address: string,
+    public phone_Number: number | null
   ) {
 
   }

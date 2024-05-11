@@ -52,16 +52,14 @@ body {
 }
 
 .main_content {
-  display:flex;
+  display: flex;
   justify-content: center;
   border-top: 1px solid black;
   min-height: 770px;
   background-color: rgb(146, 190, 216);
-
 }
 
 .content {
-
   text-align: center;
   background-color: rgb(198, 232, 252);
   width: 100%;
@@ -96,13 +94,13 @@ body {
   min-width: 200px;
 }
 
-.logform div{
-   display: flex;
-   flex-flow: row;
-}
+  .logform div {
+    display: flex;
+    flex-flow: row;
+  }
 
 .login_content input[type="text"],
- .login_content input[type="password"] {
+.login_content input[type="password"] {
   width: 160px;
   padding: 15px;
   text-align: left
@@ -113,7 +111,6 @@ body {
   text-align: center;
   width: 60px;
   padding: 10px;
-
 }
 
 
@@ -140,37 +137,45 @@ body {
   border-radius: 10px;
   max-height: 530px;
   max-width: 350px;
+  min-height: 555px;
+  max-height: 600px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-.signupform h1{
+  .signupform h1 {
     color: #121623;
-}
+  }
 
-.signupform .column{
+  .signupform .column {
     display: flex;
     flex-flow: column;
     text-align: center;
+  }
 
-}
+  .signupform input[type="text"],
+  .signupform input[type="number"],
+  .signupform input[type="password"] {
+    margin-top: 10px;
+    position: relative;
+    width: 160px;
+    padding: 15px;
+    text-align: left;
+    font-size: 14px;
+    outline: none;
+    padding: 15px 20px;
+  }
 
-.signupform input[type="text"],
-.signupform input[type="password"] {
-  margin-top: 10px;
-  position: relative;
-  width: 160px;
-  padding: 15px;
-  text-align: left;
-   font-size: 14px;
-  outline: none;
-  padding: 15px 20px;
-}
+  .signupform .row {
+    display: flex;
+    column-gap: 15px;
+    text-align: center;
+  }
 
-.signupform .row {
-  display: flex;
-  column-gap: 15px;
-  text-align: center;
-}
+  .error{
+      color: #dc5050;
+      font-size: 15px;
+      
+  }
 /*sidebar styles*/
 
 .sidebar {
@@ -186,6 +191,7 @@ body {
 /*buttons and input type text default styles*/
 
 input[type="text"],
+input[type="number"],
 input[type="password"] {
   background-color: #e4f2fe;
   padding: 10px;

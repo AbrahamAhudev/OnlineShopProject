@@ -85,13 +85,16 @@ namespace OnlineShopProject.Server.Controllers
                 return BadRequest(ModelState);
             }
 
+            NewUser.Password = _UserRepository.EncryptPassword(NewUser.Password);
+
+
             if (!_UserRepository.CreateUser(NewUser))
             {
                 ModelState.AddModelError("", "something went wrong while saving");
                 return StatusCode(500, ModelState);
             }
 
-            return Ok("user successfully created");
+            return Ok(new ApiResponse { Status = 200, Message = "User successfully created"});
         }
 
         [HttpPut("{UserId}")]

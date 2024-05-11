@@ -12,6 +12,7 @@
     <TypeScriptConfiguration Remove="src\Components\**" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="src\app\Services\User\" />
     <Folder Include="src\assets\images\" />
   </ItemGroup>
 </Project>

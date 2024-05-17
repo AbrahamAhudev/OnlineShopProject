@@ -16,6 +16,9 @@ import { LoginComponent } from './Components/login/login.component';
 import { SignupComponent } from './Components/signup/signup.component';
 import { ErrorComponent } from './Components/error/error.component';
 import { ReactiveFormsModule } from '@angular/forms'
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './Services/AuthInterceptor/auth-interceptor.service';
+import { UserComponent } from './Components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -28,14 +31,21 @@ import { ReactiveFormsModule } from '@angular/forms'
     ContactComponent,
     LoginComponent,
     SignupComponent,
-    ErrorComponent
+    ErrorComponent,
+    UserComponent
 
   ],
   imports: [
     BrowserModule, HttpClientModule, AppRoutingModule, FormsModule,
     ReactiveFormsModule
   ],
-  providers: [provideRouter(routes)],
+  providers: [provideRouter(routes),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

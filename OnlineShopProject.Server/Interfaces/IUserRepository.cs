@@ -8,6 +8,8 @@ namespace OnlineShopProject.Server.Interfaces
 
         User GetUserById(int id);
 
+        User GetUserByUsername(string username);
+
         bool UserExists(int id);
 
         bool CreateUser(User user);
@@ -19,5 +21,7 @@ namespace OnlineShopProject.Server.Interfaces
         bool Save();
 
         string EncryptPassword(string password);
+
+        bool CheckPassword(User user, string password);
     }
 }

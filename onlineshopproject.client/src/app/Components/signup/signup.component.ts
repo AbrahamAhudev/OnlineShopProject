@@ -3,7 +3,8 @@ import { User } from 'src/app/Models/User';
 import { UserService } from '../../Services/User/user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpResponse } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-signup',
@@ -20,7 +21,6 @@ export class SignupComponent {
     private fb: FormBuilder,
     private _UserService: UserService,
     private _router: Router,
-    private _route: ActivatedRoute
   ) {
 
     this.User = new User('', '', null, '', '', '', null)
@@ -70,20 +70,23 @@ export class SignupComponent {
 
       this._UserService.create(this.User).subscribe(
         (response) => {
-          alert("User created successfully");
-          console.log(response);
+
+          Swal.fire({
+            text: "User created successfully",
+            icon: "success"
+          })
+       
           this._router.navigate(['/login']);
         },
         (error) => {
           console.error("Error:", error);
-          alert("Error when creating the user");
 
+          Swal.fire({
+            text: "Error when creating the user",
+            icon: "error"
+          })
         }
       )
-
-
-       // Aquí puedes enviar los datos del usuario al servicio
-       // this._UserService.createUser(this.userForm.value).subscribe(/* Manejar la respuesta */);
       } else {
         alert("Please fill out the form correctly");
       }

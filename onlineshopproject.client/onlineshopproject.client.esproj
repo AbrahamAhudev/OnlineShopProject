@@ -12,6 +12,9 @@
     <TypeScriptConfiguration Remove="src\Components\**" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="src\app\Guards\Auth\" />
+    <Folder Include="src\app\Guards\Guest\" />
+    <Folder Include="src\app\Services\AuthInterceptor\" />
     <Folder Include="src\app\Services\User\" />
     <Folder Include="src\assets\images\" />
   </ItemGroup>

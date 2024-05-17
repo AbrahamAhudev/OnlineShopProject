@@ -20,6 +20,16 @@ namespace OnlineShopProject.Server.Repository
             _Context = context;
         }
 
+        public bool CheckPassword(User user, string password)
+        {
+            if (user.Password == EncryptPassword(password))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public bool CreateUser(User user)
         {
             _Context.Add(user);
@@ -37,16 +47,15 @@ namespace OnlineShopProject.Server.Repository
         public string EncryptPassword(string password)
         {
 
-            // Crear una instancia de SHA256, que es un algoritmo de hash
+        
             using (SHA256 sha256 = SHA256.Create()) 
             {
-                // Convertir la contraseña en una secuencia de bytes utilizando UTF-8
+
                 byte[] bytes = Encoding.UTF8.GetBytes(password);
 
-                // Calcular el hash de la contraseña
+         
                 byte[] hash = sha256.ComputeHash(bytes);
 
-                // Convertir el hash en una cadena Base64 antes de devolverla
                 return Convert.ToBase64String(hash);
             }
         }
@@ -54,6 +63,11 @@ namespace OnlineShopProject.Server.Repository
         public User GetUserById(int id)
         {
             return _Context.Users.Where(u => u.Id == id).FirstOrDefault();
+        } 
+
+        public User GetUserByUsername(string username)
+        {
+            return _Context.Users.Where(u => u.Username == username).FirstOrDefault();
         }
 
         public ICollection<User> GetUsers()

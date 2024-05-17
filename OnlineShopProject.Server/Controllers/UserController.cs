@@ -88,6 +88,12 @@ namespace OnlineShopProject.Server.Controllers
             NewUser.Password = _UserRepository.EncryptPassword(NewUser.Password);
 
 
+            if(NewUser.Phone_number.ToString().Length != 9 && NewUser.Phone_number >= 0)
+            {
+                ModelState.AddModelError("", "phone number doesn't have 9 digits" + NewUser.Phone_number.ToString());
+                return StatusCode(422, ModelState);
+            }
+
             if (!_UserRepository.CreateUser(NewUser))
             {
                 ModelState.AddModelError("", "something went wrong while saving");

@@ -6,6 +6,10 @@ using OnlineShopProject.Server.Repository;
 using MySql.Data;
 using Pomelo.EntityFrameworkCore.MySql;
 using System.Configuration;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using static System.Net.WebRequestMethods;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 
 namespace OnlineShopProject.Server
@@ -19,6 +23,28 @@ namespace OnlineShopProject.Server
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = "https://localhost:7013",
+                        ValidAudience = "https://localhost:7013",
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SigningSecuritykey123456789_./5657"))
+
+                    };
+                });
+
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireLoggedIn", policy =>
+                    policy.RequireAuthenticatedUser());
+            });
 
             builder.Services.AddCors(options =>
             {
@@ -59,7 +85,9 @@ namespace OnlineShopProject.Server
 
             app.UseCors("AppPolicy");
 
-            app.UseAuthorization();
+            app.UseAuthentication();
+            
+            
 
 
             app.MapControllers();

@@ -16,46 +16,73 @@ body {
   border-bottom: solid 1px black;
 }
 
+
+/*navbar*/
+
 .navbar {
   background: rgb(2,0,36);
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(118,182,235,1) 0%, rgba(172,222,251,1) 100%);
   display: flex;
-  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
 
-  .navbar ul {
-    display: flex;
+.nav_ul {
+  margin-left: 120px;
+  display: flex;
+  justify-content: center; /* Centra horizontalmente los enlaces de navegación */
+  flex-grow: 1; /* Permite que los enlaces de navegación ocupen todo el espacio disponible */
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar li {
+  list-style: none;
+  margin-left: 15px;
+  margin-right: 15px;
+  color: black;
+}
+
+.navbar a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+  .navbar a:hover {
+    transition: 200ms;
+    font-size: 20px;
   }
 
-  .navbar li {
-    list-style: none;
-    margin-left: 15px;
-    margin-right: 15px;
-    color: black;
-  }
+.navbar input[type="button"] {
+  height: 45px;
+  margin-left: 10px;
+}
 
-  .navbar a {
-    text-decoration: none;
-    font-weight: bold; /* Hace que el texto esté en negrita */
-  }
-
-    .navbar a:hover {
-      transition: 200ms;
-      font-size: 20px;
-    }
-
+.navbutton input{
+    background-color: aliceblue;
+}
 
 
 .active {
   text-shadow: 1px 3px 3px rgba(0,0,0,0.53);
   color: aliceblue;
 }
+.nav_btns a{
+    margin: 5px;
+}
+
+.active_btn {
+    background-color: #adadad !important;
+}
+
 
 .main_content {
   display: flex;
   justify-content: center;
   border-top: 1px solid black;
-  min-height: 770px;
+  min-height: 750px;
   background-color: rgb(146, 190, 216);
 }
 
@@ -63,7 +90,7 @@ body {
   text-align: center;
   background-color: rgb(198, 232, 252);
   width: 100%;
-  min-height: 770px;
+
 }
 
 /*login page styles*/
@@ -171,11 +198,10 @@ body {
     text-align: center;
   }
 
-  .error{
-      color: #dc5050;
-      font-size: 15px;
-      
-  }
+.error {
+  color: #dc5050;
+  font-size: 15px;
+}
 /*sidebar styles*/
 
 .sidebar {
@@ -205,7 +231,8 @@ input[type="password"] {
 
 button,
 input[type="button"],
-input[type="submit"] {
+input[type="submit"],
+.nav_btns a{
   background-color: #ccd8e4;
   padding: 10px;
   color: black;
@@ -214,7 +241,8 @@ input[type="submit"] {
 }
 
   input[type="button"]:hover,
-  input[type="submit"]:hover {
+  input[type="submit"]:hover,
+  .nav_btns a:hover {
     transition: 200ms;
     background-color: #a9c0d4;
   }
@@ -252,4 +280,8 @@ input[type="submit"] {
   margin: auto;
   padding: 0;
   border-top: 1px solid black;
+}
+
+.footer p{
+    margin-left: 15px;
 }

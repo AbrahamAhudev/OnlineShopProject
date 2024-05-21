@@ -1,1 +1,23 @@
-<p>user works!</p>
+<div class="main_content">
+  <div style="width=100%" class="content">
+
+    <h1>user page</h1>
+
+    <div id="user_page_container">
+      <ul>
+        <li>Username: {{ this.User?.username }}</li>
+        <li>Firstname: {{ this.User?.firstName }}</li>
+        <li>Lastname: {{ this.User?.lastName }}</li>
+        <li>Address: {{ this.User?.address }}</li>
+        <li>Phone number: {{ this.User?.phone_number }}</li>
+        <li>Email: {{ this.User?.email }}</li>
+      </ul>
+
+
+
+    </div>
+    <button id="pwd_btn" (click)="pwdchange()">Change Password</button>
+
+  </div>
+</div>
+

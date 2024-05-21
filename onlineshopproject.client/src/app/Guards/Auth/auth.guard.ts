@@ -26,9 +26,10 @@ export class AuthGuard implements CanActivate {
         icon: "error"
       }).then(() => {
         this._router.navigate(['/home']);
-
         return false
+        
       })
+
     }
     return true
   }

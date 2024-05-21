@@ -20,6 +20,25 @@ namespace OnlineShopProject.Server.Repository
             _Context = context;
         }
 
+        public bool ChangePassword(int userId, string newPassword)
+        {
+            var user = _Context.Users.FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return false;
+            }
+
+            if(newPassword.Length < 6)
+            {
+                return false;
+            }
+
+            user.Password = EncryptPassword(newPassword);
+
+            return UpdateUser(user);    
+        }
+
         public bool CheckPassword(User user, string password)
         {
             if (user.Password == EncryptPassword(password))
@@ -92,6 +111,12 @@ namespace OnlineShopProject.Server.Repository
         public bool UserExists(int id)
         {
             return _Context.Users.Any(u => u.Id == id);
+        }
+
+
+        public bool UserExists(string username)
+        {
+            return _Context.Users.Any(u => u.Username == username);
         }
 
     }

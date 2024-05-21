@@ -12,9 +12,13 @@ namespace OnlineShopProject.Server.Interfaces
 
         bool UserExists(int id);
 
+        bool UserExists(string id);
+
         bool CreateUser(User user);
 
         bool UpdateUser(User user);
+
+        bool ChangePassword(int userId, string newPassword);
 
         bool DeleteUser(User user);
 

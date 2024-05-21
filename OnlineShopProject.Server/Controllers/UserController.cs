@@ -59,6 +59,27 @@ namespace OnlineShopProject.Server.Controllers
             return Ok(User);
         }
 
+        [HttpGet("username/{username}")]
+        [ProducesResponseType(200, Type = typeof(User))]
+        [ProducesResponseType(400)]
+
+        public IActionResult GetUserByUsername(string username)
+        {
+            if (!_UserRepository.UserExists(username))
+            {
+                return NotFound();
+            }
+
+            var User = _UserRepository.GetUserByUsername(username);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            return Ok(User);
+        }
+
 
         [HttpPost]
         [ProducesResponseType(204)]
@@ -123,7 +144,7 @@ namespace OnlineShopProject.Server.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            
             if (!_UserRepository.UpdateUser(UpdatedUser))
             {
                 ModelState.AddModelError("", "Something went wrong when saving");
@@ -134,6 +155,37 @@ namespace OnlineShopProject.Server.Controllers
             return NoContent();
 
         }
+
+        [HttpPut("password/{UserId}")]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(404)]
+
+        public IActionResult ChangeUserPassword(int UserId, [FromBody] string Password)
+        {
+            if (Password is null)
+                return BadRequest(ModelState);
+
+
+            if (!_UserRepository.UserExists(UserId))
+                return BadRequest(ModelState);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (!_UserRepository.ChangePassword(UserId, Password))
+            {
+                ModelState.AddModelError("", "Something went wrong when saving");
+
+                return StatusCode(500, ModelState);
+            }
+
+            return NoContent();
+
+        }
+
 
         [HttpDelete("{UserId}")]
         [ProducesResponseType(400)]

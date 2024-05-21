@@ -64,7 +64,7 @@ export class SignupComponent {
 
       this.User.email = this.userForm.get('email')?.value
 
-      this.User.phone_Number = this.userForm.get('phone_number')?.value
+      this.User.phone_number = this.userForm.get('phone_number')?.value
 
       this.User.password = this.userForm.get('password')?.value
 

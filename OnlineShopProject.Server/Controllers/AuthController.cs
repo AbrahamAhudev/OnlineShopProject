@@ -40,7 +40,7 @@ namespace OnlineShopProject.Server.Controllers
                 var claims = new List<Claim>
                 {
 
-                    new Claim(ClaimTypes.Name, User.UserName),
+                    new Claim(JwtRegisteredClaimNames.Sub, User.UserName),
 
                     new Claim(ClaimTypes.Surname, UserFinded.LastName),
 

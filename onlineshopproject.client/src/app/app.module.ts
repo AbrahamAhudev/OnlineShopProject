@@ -19,6 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './Services/AuthInterceptor/auth-interceptor.service';
 import { UserComponent } from './Components/user/user.component';
+import { ChangePasswordComponent } from './Components/change-password/change-password.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { UserComponent } from './Components/user/user.component';
     LoginComponent,
     SignupComponent,
     ErrorComponent,
-    UserComponent
+    UserComponent,
+    ChangePasswordComponent,
+
 
   ],
   imports: [

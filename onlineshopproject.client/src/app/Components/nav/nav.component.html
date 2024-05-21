@@ -22,7 +22,7 @@
   </div>
 
   <div class="nav_btns">
-    <a *ngIf="isAuthenticated" [routerLink]="['/not implemented']" [routerLinkActive]="['active_btn']">User</a>
+    <a *ngIf="isAuthenticated" [routerLink]="['/user']" [routerLinkActive]="['active_btn']">User</a>
     <a *ngIf="isAuthenticated" [routerLink]="['/home']" (click)="logoff()">Log off</a>
   </div>
 

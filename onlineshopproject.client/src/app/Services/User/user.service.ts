@@ -32,4 +32,15 @@ export class UserService {
 
   }
 
+  getUserByUsername(username: string): Observable<any> {
+    return this._http.get(this.url + 'api/User/username/' + username)
+  }
+
+  UpdatePassword(password: string, userid: number): Observable<any> {
+    let params = JSON.stringify(password)
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this._http.put(this.url + 'api/User/password/' + userid, params, { headers: headers });
+  }
+
 }

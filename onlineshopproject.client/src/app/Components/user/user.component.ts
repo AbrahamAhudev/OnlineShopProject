@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
   ) {
 
     this.User = null;
-    this.phone_number = '';
+
   }
 
   ngOnInit() {
@@ -34,7 +34,7 @@ export class UserComponent implements OnInit {
       this._UserService.getUserByUsername(UserName).subscribe(
         Response => {
           this.User = Response
-          this.phone_number = this.User?.phone_number?.toString();
+       
           
         },
         error => {
@@ -50,6 +50,10 @@ export class UserComponent implements OnInit {
 
   pwdchange() {
     this._router.navigate(['/user/changepwd']);
+  }
+
+  edituser() {
+    this._router.navigate(['/user/edit']);
   }
 
 }

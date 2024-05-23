@@ -144,6 +144,7 @@ namespace OnlineShopProject.Server.Controllers
             {
                 return BadRequest(ModelState);
             }
+
             
             if (!_UserRepository.UpdateUser(UpdatedUser))
             {

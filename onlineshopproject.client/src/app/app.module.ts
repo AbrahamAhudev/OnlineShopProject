@@ -20,6 +20,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './Services/AuthInterceptor/auth-interceptor.service';
 import { UserComponent } from './Components/user/user.component';
 import { ChangePasswordComponent } from './Components/change-password/change-password.component';
+import { UsereditComponent } from './Components/useredit/useredit.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { ChangePasswordComponent } from './Components/change-password/change-pas
     ErrorComponent,
     UserComponent,
     ChangePasswordComponent,
+    UsereditComponent,
 
 
   ],

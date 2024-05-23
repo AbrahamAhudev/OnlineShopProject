@@ -1,0 +1,26 @@
+<div class="main_content">
+  <div style="width=100%" class="content">
+
+    <h1>edit your user</h1>
+
+    <form [formGroup]="editForm" (ngSubmit)="SaveChanges()">
+      <div id="user_page_container">
+
+        <ul>
+
+          <li>Firstname*: <input type="text" formControlName="firstname" /></li>
+          <li>Lastname: <input type="text" formControlName="lastname" /></li>
+          <li>Address*:  <input type="text" formControlName="address" /></li>
+          <li>Phone number:  <input type="number" formControlName="phone_number" /></li>
+        </ul>
+
+
+      </div>
+      <div class="user_btns">
+        <button (click)="SaveChanges()" id="useredit_btn">Save changes</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+

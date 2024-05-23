@@ -100,7 +100,7 @@ body {
   width: 100%;
   text-align: center;
   justify-content: center;
-  background-color: rgb(198, 232, 252);
+  background-color: rgb(225, 244, 255);
 }
 
 
@@ -323,10 +323,15 @@ input[type="submit"],
 
   #pwd_btn{
     background-color: #7acba3;
-    margin-right: 390px;
     padding: 20px;
+    margin: 5px
   }
 
+#useredit_btn {
+  background-color: rgb(131, 194, 194);
+  padding: 20px;
+  margin: 5px
+}
 
 #pwd_btn:hover {
     transition: 200ms;
@@ -334,3 +339,13 @@ input[type="submit"],
 }
 
 
+#useredit_btn:hover {
+  transition: 200ms;
+  background-color: rgb(148, 216, 214);
+}
+
+#user_page_container input[type="text"],
+#user_page_container input[type="number"] {
+  margin: 0;
+  background-color: rgb(216, 241, 255);
+}

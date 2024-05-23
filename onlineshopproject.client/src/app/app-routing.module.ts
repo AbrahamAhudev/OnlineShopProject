@@ -10,7 +10,7 @@ import { SignupComponent } from './Components/signup/signup.component';
 import { AuthGuard } from './Guards/Auth/auth.guard';
 import { GuestGuard } from './Guards/Guest/guest.guard';
 import { ChangePasswordComponent } from './Components/change-password/change-password.component';
-
+import { UsereditComponent } from './Components/useredit/useredit.component';
 
 
 export const routes: Routes = [
@@ -20,6 +20,7 @@ export const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'user', component: UserComponent, canActivate: [GuestGuard] },
+  { path: 'user/edit', component: UsereditComponent, canActivate: [GuestGuard] },
   { path: 'signup', component: SignupComponent },
   { path: 'user/changepwd', component: ChangePasswordComponent, canActivate: [GuestGuard]},
   { path: '**', component: ErrorComponent }

@@ -7,6 +7,8 @@ namespace OnlineShopProject.Server.Interfaces
     {
         ICollection<Product> GetProducts();
 
+        ICollection<Product> SearchProducts(string SearchString);
+
         Product GetProductById(int id);
 
         bool ProductExists(int id);

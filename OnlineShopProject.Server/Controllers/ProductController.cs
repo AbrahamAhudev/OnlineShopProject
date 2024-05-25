@@ -57,6 +57,23 @@ namespace OnlineShopProject.Server.Controllers
             return Ok(Product);
         }
 
+        [HttpGet("search/{searchstring}")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Product>))]
+        [ProducesResponseType(400)]
+
+        public IActionResult SearchProduct(string searchstring)
+        {
+
+            var Products = _ProductRepository.SearchProducts(searchstring);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            return Ok(Products);
+        }
+
 
         [HttpPost]
         [ProducesResponseType(204)]

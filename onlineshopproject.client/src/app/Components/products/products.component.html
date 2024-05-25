@@ -1,15 +1,37 @@
 <div class="main_content">
 
   <div class="content">
-    <p>products</p>
+    <h1 style="font-size: 25px">available products</h1>
+
+    <div id="products">
+
+      <div (click)="productclick()" id="product" *ngFor="let product of products">
+
+        <img id="product-img" src="../../../assets/images/main-qimg-1a4bafe2085452fdc55f646e3e31279c-lq.jpg" />
+
+        <p>{{product.name}}</p>
+
+
+        <p id="product_price">{{product.price}}</p>
+      </div>
+
+    </div>
+   
   </div>
+
+   
+
+
+
+
+
 
   <aside class="sidebar">
     <div>
       <h1 style="text-decoration: underline">Search bar</h1>
-      <form>
-        <input type="text" placeholder="Search a product" required/>
-        <input type="button" value="🔍" />
+      <form #SearchForm="ngForm" (ngSubmit)="Search()">
+        <input name="searchstring" [(ngModel)] ="searchstring" type="text" placeholder="Search a product" required/>
+        <input id="search_btn" type="submit" value="🔍"  [disabled]="SearchForm.invalid" />
       </form>
     </div>
   </aside>

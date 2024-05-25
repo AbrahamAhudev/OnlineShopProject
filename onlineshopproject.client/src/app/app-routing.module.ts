@@ -11,13 +11,14 @@ import { AuthGuard } from './Guards/Auth/auth.guard';
 import { GuestGuard } from './Guards/Guest/guest.guard';
 import { ChangePasswordComponent } from './Components/change-password/change-password.component';
 import { UsereditComponent } from './Components/useredit/useredit.component';
-
+import { SearchComponent } from './Components/search/search.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'products', component: ProductsComponent },
+  { path: 'products/search/:searchstring', component: SearchComponent },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'user', component: UserComponent, canActivate: [GuestGuard] },
   { path: 'user/edit', component: UsereditComponent, canActivate: [GuestGuard] },

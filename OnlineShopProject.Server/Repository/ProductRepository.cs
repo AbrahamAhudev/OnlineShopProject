@@ -54,6 +54,13 @@ namespace OnlineShopProject.Server.Repository
             return saved > 0;
         }
 
+        public ICollection<Product> SearchProducts(string SearchString)
+        {
+            return _Context.Products
+                .Where(p => p.Name.Contains(SearchString))
+                .ToList();
+        }
+
         public bool UpdateProduct(Product Product)
         {
             _Context.Update(Product);

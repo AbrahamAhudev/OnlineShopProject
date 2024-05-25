@@ -4,15 +4,18 @@
     <p>home</p>
   </div>
 
+
+
+
+
   <aside class="sidebar">
     <div>
       <h1 style="text-decoration: underline">Search bar</h1>
-      <form>
-        <input type="text" placeholder="Search a product" required/>
-        <input type="button" value="🔍" />
+      <form #SearchForm="ngForm" (ngSubmit)="Search()">
+        <input name="searchstring" [(ngModel)]="SearchString" type="text" placeholder="Search a product" required />
+        <input id="search_btn" type="submit" value="🔍" [disabled]="SearchForm.invalid" />
       </form>
     </div>
-    
   </aside>
 
 </div>

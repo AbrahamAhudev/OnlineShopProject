@@ -21,6 +21,7 @@ import { AuthInterceptor } from './Services/AuthInterceptor/auth-interceptor.ser
 import { UserComponent } from './Components/user/user.component';
 import { ChangePasswordComponent } from './Components/change-password/change-password.component';
 import { UsereditComponent } from './Components/useredit/useredit.component';
+import { SearchComponent } from './Components/search/search.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { UsereditComponent } from './Components/useredit/useredit.component';
     UserComponent,
     ChangePasswordComponent,
     UsereditComponent,
+    SearchComponent,
 
 
   ],

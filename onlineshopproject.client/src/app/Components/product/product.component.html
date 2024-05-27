@@ -1,0 +1,22 @@
+<div class="main_content">
+
+  <div class="content">
+
+    <div *ngIf="Product != null">
+
+      <img id="product-img" *ngIf="Product.image == null" src="../../../assets/images/main-qimg-1a4bafe2085452fdc55f646e3e31279c-lq.jpg" />
+      <img id="product-img" *ngIf="Product.image != null" src="../../../assets/images/products/{{Product.image}}" />
+      
+      <h1>{{ Product.name }}</h1>
+      <h2>{{ Product.description }}</h2>
+      <p>{{ Product.price }}</p>
+
+    </div>
+     
+    <div *ngIf="Product == null">
+        <h1>Product not found</h1>
+    </div>
+
+  </div>
+
+</div>

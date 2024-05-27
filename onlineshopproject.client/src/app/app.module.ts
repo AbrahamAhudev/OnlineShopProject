@@ -22,6 +22,7 @@ import { UserComponent } from './Components/user/user.component';
 import { ChangePasswordComponent } from './Components/change-password/change-password.component';
 import { UsereditComponent } from './Components/useredit/useredit.component';
 import { SearchComponent } from './Components/search/search.component';
+import { ProductComponent } from './Components/product/product.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { SearchComponent } from './Components/search/search.component';
     ChangePasswordComponent,
     UsereditComponent,
     SearchComponent,
+    ProductComponent,
 
 
   ],

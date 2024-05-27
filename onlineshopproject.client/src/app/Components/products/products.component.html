@@ -1,13 +1,16 @@
 <div class="main_content">
 
   <div class="content">
-    <h1 style="font-size: 25px">available products</h1>
+    <h1 style="font-size: 25px" *ngIf="loaded == true">available products</h1>
+
+    <h1 style="font-size: 20px" *ngIf="loaded == false">loading products</h1>
 
     <div id="products">
 
-      <div (click)="productclick()" id="product" *ngFor="let product of products">
+      <div (click)="productclick( product.id )" id="product" *ngFor="let product of products">
 
-        <img id="product-img" src="../../../assets/images/main-qimg-1a4bafe2085452fdc55f646e3e31279c-lq.jpg" />
+        <img *ngIf="product.image == null" id="products-img" src="../../../assets/images/main-qimg-1a4bafe2085452fdc55f646e3e31279c-lq.jpg" />
+        <img *ngIf="product.image != null" id="products-img" src="../../../assets/images/products/{{product.image}}" />
 
         <p>{{product.name}}</p>
 
@@ -16,7 +19,7 @@
       </div>
 
     </div>
-   
+
   </div>
 
    

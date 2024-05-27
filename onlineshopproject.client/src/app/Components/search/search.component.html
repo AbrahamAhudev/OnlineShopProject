@@ -3,16 +3,18 @@
   <div class="content">
 
     <h1 style="font-size: 25px">search results: {{ParamString}}</h1>
-    <h1 *ngIf="products.length == 0">Products not found</h1>
+    <h1 *ngIf="products.length == 0 && loaded == true">Products not found</h1>
+    <h1 *ngIf="loaded == false">Loading products</h1>
 
     <div id="products">
 
 
 
 
-      <div (click)="productclick()" id="product" *ngFor="let product of products">
+      <div (click)="productclick(product.id)" id="product" *ngFor="let product of products">
 
-        <img id="product-img" src="../../../assets/images/main-qimg-1a4bafe2085452fdc55f646e3e31279c-lq.jpg" />
+        <img *ngIf="product.image == null" id="products-img" src="../../../assets/images/main-qimg-1a4bafe2085452fdc55f646e3e31279c-lq.jpg" />
+        <img *ngIf="product.image != null" id="products-img" src="../../../assets/images/products/{{product.image}}" />
 
         <p>{{product.name}}</p>
 

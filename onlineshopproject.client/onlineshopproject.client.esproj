@@ -17,6 +17,6 @@
     <Folder Include="src\app\Services\AuthInterceptor\" />
     <Folder Include="src\app\Services\Product\" />
     <Folder Include="src\app\Services\User\" />
-    <Folder Include="src\assets\images\" />
+    <Folder Include="src\assets\images\products\" />
   </ItemGroup>
 </Project>

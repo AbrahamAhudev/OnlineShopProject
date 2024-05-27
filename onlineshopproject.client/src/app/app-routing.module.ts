@@ -12,12 +12,14 @@ import { GuestGuard } from './Guards/Guest/guest.guard';
 import { ChangePasswordComponent } from './Components/change-password/change-password.component';
 import { UsereditComponent } from './Components/useredit/useredit.component';
 import { SearchComponent } from './Components/search/search.component';
+import { ProductComponent } from './Components/product/product.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'products', component: ProductsComponent },
+  { path: 'products/:id', component: ProductComponent },
   { path: 'products/search/:searchstring', component: SearchComponent },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'user', component: UserComponent, canActivate: [GuestGuard] },

@@ -14,12 +14,15 @@ export class SearchComponent implements OnInit {
   public SearchString: string
   public ParamString: string
   public products: Product[]
+  public loaded: boolean
+
   constructor(private _ProductService: ProductService,
     private _router: Router,
     private _route: ActivatedRoute) {
     this.products = []
     this.ParamString = '';
     this.SearchString = '';
+    this.loaded = false;
   }
 
   ngOnInit() {
@@ -32,6 +35,7 @@ export class SearchComponent implements OnInit {
       this._ProductService.SearchProduct(this.ParamString).subscribe(
         Response => {
           this.products = Response
+          this.loaded = true;
         },
         (Error) => {
           console.log(Error)
@@ -42,8 +46,8 @@ export class SearchComponent implements OnInit {
 
   }
 
-  productclick() {
-    console.log("click")
+  productclick(productId: number) {
+    this._router.navigate(['products/' + productId])
   }
 
   Search() {

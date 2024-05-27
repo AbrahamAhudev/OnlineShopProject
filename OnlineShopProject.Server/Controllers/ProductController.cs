@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShopProject.Server.DTOs;
 using OnlineShopProject.Server.Interfaces;
 using OnlineShopProject.Server.Models;
 using OnlineShopProject.Server.Repository;
@@ -79,21 +80,47 @@ namespace OnlineShopProject.Server.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
 
-        public IActionResult CreateProduct([FromBody] Product NewProduct)
+        public IActionResult CreateProduct([FromForm] ProductDTO NewProductDTO)
         {
-            if (NewProduct == null)
+            if (NewProductDTO == null)
             {
                 return BadRequest();
             }
 
             var product = _ProductRepository.GetProducts()
-                .Where(u => u.Name.ToLower() == NewProduct.Name.ToLower()).FirstOrDefault();
+                .Where(u => u.Name.ToLower() == NewProductDTO.Name.ToLower()).FirstOrDefault();
 
             if (product is not null)
             {
                 ModelState.AddModelError("", "product already exists");
                 return StatusCode(422, ModelState);
             }
+
+            string filename = null;
+
+            var NewProduct = new Product
+            {
+                Name = NewProductDTO.Name,
+                Description = NewProductDTO.Description,
+                Price = NewProductDTO.Price,
+
+            };
+
+            if (NewProductDTO.Image != null)
+            {
+                try
+                {
+                    filename = SaveImage(NewProductDTO.Image);
+                    NewProduct.Image = filename;
+                }
+                catch (InvalidOperationException ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                    return BadRequest(ModelState);
+                }
+            }
+
+
 
             if (!ModelState.IsValid)
             {
@@ -114,13 +141,12 @@ namespace OnlineShopProject.Server.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
 
-        public IActionResult UpdateProduct(int ProductId, [FromBody] Product UpdatedProduct)
+        public IActionResult UpdateProduct(int ProductId, [FromForm] ProductDTO UpdatedProductDTO)
         {
-            if (UpdatedProduct is null)
+            if (UpdatedProductDTO is null)
                 return BadRequest(ModelState);
 
-            if (ProductId != UpdatedProduct.Id)
-                return BadRequest(ModelState);
+            
 
             if (!_ProductRepository.ProductExists(ProductId))
                 return BadRequest(ModelState);
@@ -128,6 +154,32 @@ namespace OnlineShopProject.Server.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            var UpdatedProduct = new Product
+            {
+                Id = ProductId,
+                Name = UpdatedProductDTO.Name,
+                Description = UpdatedProductDTO.Description,
+                Price = UpdatedProductDTO.Price,
+                
+
+            };
+
+            string filename = null;
+
+            if (UpdatedProductDTO.Image != null)
+            {
+                try
+                {
+                    filename = SaveImage(UpdatedProductDTO.Image);
+                    UpdatedProduct.Image = filename;
+                }
+                catch (InvalidOperationException ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                    return BadRequest(ModelState);
+                }
             }
 
             if (!_ProductRepository.UpdateProduct(UpdatedProduct))
@@ -153,6 +205,19 @@ namespace OnlineShopProject.Server.Controllers
 
             Product ProductToDelete = _ProductRepository.GetProductById(ProductId);
 
+            if(!string.IsNullOrEmpty(ProductToDelete.Image))
+            {
+               
+                string relativePath = Path.Combine("..", "onlineshopproject.client", "src", "assets", "images", "products");
+         
+                string imagePath = Path.Combine(relativePath, ProductToDelete.Image);
+     
+                if (System.IO.File.Exists(imagePath))
+                {
+                    System.IO.File.Delete(imagePath);
+                }
+            }
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -166,6 +231,45 @@ namespace OnlineShopProject.Server.Controllers
             return NoContent();
 
         }
+
+
+        private string SaveImage(IFormFile image)
+        {
+
+
+            var permittedExtensions = new[] { ".jpg", ".jpeg", ".png" };
+            var permittedMimeTypes = new[] { "image/jpeg", "image/png" };
+
+            var extension = Path.GetExtension(image.FileName).ToLowerInvariant();
+
+            if(string.IsNullOrEmpty(extension) || !permittedExtensions.Contains(extension)){
+
+                throw new InvalidOperationException("Unsupported file extension");
+            }
+
+            if (!permittedMimeTypes.Contains(image.ContentType.ToLowerInvariant()))
+            {
+
+            }
+
+            // Define the relative path to the images folder
+            string relativePath = Path.Combine("..", "onlineshopproject.client", "src", "assets", "images", "products");
+
+            // Combine the relative path with the current directory to get the absolute path
+
+            string uploadsFolder = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), relativePath));
+
+            string uniqueFileName = Guid.NewGuid().ToString().Substring(0, 8) + "_" + image.FileName;
+            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                image.CopyTo(stream);
+            }
+
+            return uniqueFileName;
+        }
+
 
     }
 }

@@ -375,8 +375,9 @@ input[type="submit"],
     border-radius: 15px;
     display: flex;
     flex-flow: column;
-    height: 240px;
-    width: 180px;
+    min-height: 200px;
+    max-height: 300px;
+    min-width: 180px;
     margin: 10px;
     background-color: aliceblue;
 
@@ -385,18 +386,10 @@ input[type="submit"],
 }
 
 #products-img{
-    border-bottom: 1px solid black;
-    height: 180px;
-    width: 180px;
+    border: 1px solid black;
+    max-height: 180px;
+    max-width: 180px;
     border-radius: 15px;
-}
-
-#product-img {
-  border: 1px solid black;
-  height: 380px;
-  width: 480px;
-  border-radius: 15px;
-  margin: 10px;
 }
 
 #product_price{
@@ -405,4 +398,103 @@ input[type="submit"],
     border: 1px solid #606060;
     border-radius: 10px;
     width: 30px;
+    padding: 5px;
+    margin-bottom: 50px;
 }
+
+/*product page styles*/
+
+#productpagecontent{
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#product_imgname {
+  margin-left: 10px;
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  margin-top: 40px;
+}
+
+#product-img {
+  border: 1px solid black;
+  min-height: 280px;
+  max-height: 440px;
+  min-width: 410px;
+  max-width: 510px;
+  border-radius: 15px;
+  margin: 15px;
+}
+
+#product_imgname h1 {
+  margin-top: 0;
+  background-color: #ccd8e4;
+  width: 140px;
+  padding: 30px;
+  border: 1px solid black;
+  border-radius: 10px;
+  font-size: 28px;
+}
+
+
+#product_description {
+  background-color: #ccd8e4;
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 14px;
+  font-size: 10px;
+  margin: 0;
+}
+
+#productpage_price{
+    background-color: #fffeea;
+    border: 1px solid black;
+    padding: 10px;
+    width: 250px;
+    height: 180px;
+    border-radius: 15px;
+    margin-bottom: 100px;
+}
+
+  #productpage_price #price {
+    background-color: #e1e1e1;
+    border: 1px solid #525252;
+    width: 40px;
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+  #productpage_price #info{
+      margin-top: 20px;
+      margin-left: 5px;
+  }
+
+  #productpage_price button {
+    background-color: #50ba31;
+    padding: 20px;
+    margin: 3px;
+  }
+
+  #productpage_price #buynow_btn {
+    background-color: #9cd82c;
+  }
+
+    #productpage_price button:hover
+     {
+      transition: 200ms;
+      background-color: #4ded1f;
+    }
+
+  #productpage_price #buynow_btn:hover {
+    transition: 200ms;
+    background-color: #b0f530;
+  }
+
+  #product_price_container{
+      display:flex;
+      justify-content: center;
+      flex-flow: row;
+  }

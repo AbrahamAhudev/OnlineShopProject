@@ -50,7 +50,7 @@ namespace OnlineShopProject.Server
             {
                 options.AddPolicy("AppPolicy", app =>
                 {
-                    app.AllowAnyOrigin()
+                    app.WithOrigins("https://localhost:4200")
                     .AllowAnyHeader()
                     .AllowAnyMethod();
                 });
@@ -58,6 +58,8 @@ namespace OnlineShopProject.Server
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+            builder.Services.AddScoped<ICartRepository, CartRepository>();
+            builder.Services.AddScoped<ICartItemRepository, CartItemRepository>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -84,6 +86,8 @@ namespace OnlineShopProject.Server
             app.UseHttpsRedirection();
 
             app.UseCors("AppPolicy");
+
+            app.UseAuthorization();
 
             app.UseAuthentication();
             

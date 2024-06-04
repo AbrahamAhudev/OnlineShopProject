@@ -1,5 +1,10 @@
 <nav class="navbar">
 
+  <div class="nav_btns">
+    <a *ngIf="isAuthenticated" [routerLink]="['/cart']" [routerLinkActive]="['active_btn']"> Cart</a>
+  </div>
+
+
   <div class="nav_ul">
     <ul>
       <li>

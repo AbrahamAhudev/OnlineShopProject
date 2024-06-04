@@ -17,6 +17,8 @@
 
         public int? Phone_number { get; set; }
 
+        public int? CartId { get; set; }
+
     }
 
     

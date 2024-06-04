@@ -1,0 +1,45 @@
+<div class="main_content">
+
+  <div class="content">
+
+    <h1 style="text-decoration: underline">Cart</h1>
+
+
+    <h1 *ngIf="Loaded == false" style="font-size: 24px">Loading cart</h1>
+
+    <h1 *ngIf="Loaded == true && TotalPrice == 0" style="font-size: 24px">there's no products in the cart</h1>
+
+
+    <div id="cartitem_container">
+
+
+      <div id="cartitem" *ngFor="let product of Products">
+
+        <img *ngIf="product.image == null" src="../../../assets/images/main-qimg-1a4bafe2085452fdc55f646e3e31279c-lq.jpg" />
+        <img *ngIf="product.image != null" src="../../../assets/images/products/{{product.image}}" />
+        <h1>{{product.productName}}</h1>
+        <h2>{{product.productPrice}}€</h2>
+        <p>Units:{{product.quantity}}</p>
+
+        <p (click)="DeleteCartItem( product.cartItemId )" id="cartitem_delete">delete item</p>
+
+      </div>
+
+      <div *ngIf="Loaded == true && Products != null && TotalPrice != 0" id="cartpage_price">
+        <div id="product_price_container">
+          <p id="price">{{TotalPrice}}€</p>
+          <p id="info">shipping in 3 days</p>
+        </div>
+
+        
+        <button id="buynow_btn">Buy now</button>
+
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+
+

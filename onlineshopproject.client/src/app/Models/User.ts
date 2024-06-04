@@ -9,7 +9,8 @@ export class User {
     public password: string,
     public email: string,
     public address: string,
-    public phone_number: number | null
+    public phone_number: number | null,
+    public CartId?: number
   ) {
 
   }

@@ -2,7 +2,7 @@
 
   <div class="content">
 
-    <div id="productpagecontent" *ngIf="Product != null">
+    <div id="productpagecontent" *ngIf="Product != null && Loaded == true">
 
 
 
@@ -20,19 +20,23 @@
       <div id="productpage_price">
         <div id="product_price_container">
           <p id="price">{{ Product.price }}€</p>
-          <p id="info">envio en 3 dias</p>
+          <p id="info">shipping in 3 days</p>
         </div>
 
-        <button>Add to cart <img style="width: 15px;" src="../../../assets/images/shopping-cart-icon.png" /></button>
+        <button (click)="AddToCart()">Add to cart <img style="width: 15px;" src="../../../assets/images/shopping-cart-icon.png" /></button>
         <button id="buynow_btn">Buy now</button>
 
       </div>
-    
+
 
     </div>
-     
-    <div *ngIf="Product == null">
-        <h1>Product not found</h1> 
+
+    <div *ngIf="Loaded == false">
+      <h1>Loading Product</h1>
+    </div>
+
+    <div *ngIf="Product == null && Loaded == true">
+      <h1>Product not found</h1>
     </div>
 
   </div>

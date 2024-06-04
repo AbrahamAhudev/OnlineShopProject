@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShopProject.Server.Data;
 using OnlineShopProject.Server.Interfaces;
 using OnlineShopProject.Server.Models;
 
@@ -14,11 +15,18 @@ namespace OnlineShopProject.Server.Controllers
     {
 
         private readonly IUserRepository _UserRepository;
-     
+        private readonly DataContext _DataContext;
+        private readonly ICartRepository _CartRepository;
+        private readonly ICartItemRepository _CartItemRepository;
 
-        public UserController(IUserRepository userRepository)
+
+        public UserController(IUserRepository userRepository, DataContext context, ICartItemRepository cartItemRepository, ICartRepository cartrepository)
         {
             _UserRepository = userRepository;
+            _DataContext = context;
+            _CartItemRepository = cartItemRepository;
+            _CartRepository = cartrepository;
+
         }
 
 
@@ -200,9 +208,20 @@ namespace OnlineShopProject.Server.Controllers
 
             User UserToDelete = _UserRepository.GetUserById(UserId);
 
+            Cart CartToDelete = _DataContext.Carts.Where(c => c.UserId == UserId).FirstOrDefault();
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            if(CartToDelete != null)
+            {
+                if (!_CartRepository.DeleteCart(CartToDelete))
+                {
+                    ModelState.AddModelError("", "something went wrong deleting the user");
+                }
+               
             }
 
             if (!_UserRepository.DeleteUser(UserToDelete))

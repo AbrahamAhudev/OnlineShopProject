@@ -19,7 +19,8 @@ namespace OnlineShopProject.Server
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-           
+
+
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -67,10 +68,11 @@ namespace OnlineShopProject.Server
            
             builder.Services.AddDbContext<DataContext>(options =>
             {
-                var connetionString = builder.Configuration.GetConnectionString("DefaultConnection");
-                options.UseMySql(connetionString, ServerVersion.AutoDetect(connetionString));
+                var connectionString =  System.Environment.GetEnvironmentVariable("ONLINESHOPCONNECTIONSTRING");
+                
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
             });
-
+         
             var app = builder.Build();
 
             app.UseDefaultFiles();

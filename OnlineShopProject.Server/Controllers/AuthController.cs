@@ -71,11 +71,6 @@ namespace OnlineShopProject.Server.Controllers
             return Unauthorized();
         }
 
-        [Authorize(Policy = "RequireLoggedIn")]
-        [HttpGet("secure-data")]
-        public IActionResult GetSecureData()
-        {
-            return Ok("Esta es información segura");
-        }
+      
     }
 }

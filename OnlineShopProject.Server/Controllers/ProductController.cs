@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShopProject.Server.Data;
 using OnlineShopProject.Server.DTOs;
 using OnlineShopProject.Server.Interfaces;
 using OnlineShopProject.Server.Models;
@@ -14,10 +15,14 @@ namespace OnlineShopProject.Server.Controllers
     {
 
         private readonly IProductRepository _ProductRepository;
+        private readonly ICartItemRepository _CartItemRepository;
+        private readonly DataContext _DataContext;
 
-        public ProductController(IProductRepository productRepository)
+        public ProductController(IProductRepository productRepository, ICartItemRepository cartItemRepository, DataContext context)
         {
             _ProductRepository = productRepository;
+            _CartItemRepository = cartItemRepository;
+            _DataContext = context;
         }
 
 
@@ -223,6 +228,18 @@ namespace OnlineShopProject.Server.Controllers
                 return BadRequest(ModelState);
             }
 
+            var CartItemsToDelete = _DataContext.CartItems.Where(ci => ci.ProductId == ProductId).ToList();
+
+
+
+            if (CartItemsToDelete.Any())
+            {
+                if (!_CartItemRepository.DeleteCartItems(CartItemsToDelete))
+                {
+                    ModelState.AddModelError("", "something went wrong deleting the product");
+                }
+            }
+
             if (!_ProductRepository.DeleteProduct(ProductToDelete))
             {
                 ModelState.AddModelError("", "something went wrong deleting the product");
@@ -252,10 +269,7 @@ namespace OnlineShopProject.Server.Controllers
 
             }
 
-            // Define the relative path to the images folder
             string relativePath = Path.Combine("..", "onlineshopproject.client", "src", "assets", "images", "products");
-
-            // Combine the relative path with the current directory to get the absolute path
 
             string uploadsFolder = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), relativePath));
 

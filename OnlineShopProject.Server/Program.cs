@@ -89,10 +89,7 @@ namespace OnlineShopProject.Server
 
             app.UseAuthorization();
 
-            app.UseAuthentication();
-            
-            
-
+            app.UseAuthentication();   
 
             app.MapControllers();
 

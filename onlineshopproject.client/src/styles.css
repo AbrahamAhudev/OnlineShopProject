@@ -148,7 +148,9 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: rgb(198, 232, 252);
+  text-align: center;
+  background-color: rgb(225, 244, 255);
+  
 }
 
 .signupform {
@@ -230,6 +232,17 @@ input[type="password"] {
   text-align: center;
 }
 
+.form_user_param {
+  background-color: #c7ddf0;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  min-width: 10px;
+  max-width: 115px;
+  text-align: center;
+}
+
 button,
 input[type="button"],
 input[type="submit"],
@@ -239,6 +252,8 @@ input[type="submit"],
   color: black;
   border-radius: 10px;
   border: 1px solid black;
+  cursor: pointer
+
 }
 
   input[type="button"]:hover,
@@ -654,4 +669,71 @@ input[type="submit"],
   border: 1px solid black;
   border-radius: 5px;
   margin: 10px;
+}
+
+/*order page styles*/
+
+.orderform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  background-color: #a3c6e1;
+  border: 1px solid black;
+  margin: 13px;
+  padding: 15px;
+  padding-left: 60px;
+  padding-right: 60px;
+  border-radius: 10px;
+  max-width: 350px;
+  height: 380px;
+  max-height: 600px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+
+#order_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(225, 244, 255);
+
+}
+
+.orderform h1 {
+  color: #121623;
+}
+.orderform .column {
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+}
+
+.orderform input[type="text"],
+.orderform input[type="number"],
+.orderform input[type="password"],
+.form_user_param {
+  margin-top: 10px;
+  position: relative;
+  width: 160px;
+  padding: 15px;
+  text-align: left;
+  font-size: 14px;
+  outline: none;
+  padding: 15px 20px;
+}
+
+.orderform .row {
+  display: flex;
+  column-gap: 15px;
+  text-align: center;
+}
+
+#order_infobox {
+  border-top: 1px solid black;
+  width: 250px;
+  border-bottom: 1px solid black;
+  margin-bottom: 15px;
+  background-color: #b7d8ed;
 }

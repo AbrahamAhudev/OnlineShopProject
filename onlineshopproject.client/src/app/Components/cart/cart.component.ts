@@ -5,6 +5,7 @@ import { User } from '../../Models/User';
 import { UserService } from '../../Services/User/user.service';
 import { jwtDecode } from 'jwt-decode';
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -21,7 +22,8 @@ export class CartComponent implements OnInit {
 
 
   constructor(private _CartService: CartService,
-    private _UserService: UserService) {
+    private _UserService: UserService,
+    private _router: Router) {
     this.Products = null;
     this.User = null;
     this.Loaded = false;
@@ -94,6 +96,10 @@ export class CartComponent implements OnInit {
 
       }
     )
+  }
+
+  buynow_btn() {
+    this._router.navigate(['cart/order']);
   }
   
 }

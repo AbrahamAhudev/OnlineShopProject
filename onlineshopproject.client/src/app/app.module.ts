@@ -24,6 +24,7 @@ import { UsereditComponent } from './Components/useredit/useredit.component';
 import { SearchComponent } from './Components/search/search.component';
 import { ProductComponent } from './Components/product/product.component';
 import { CartComponent } from './Components/cart/cart.component';
+import { OrderComponent } from './Components/order/order.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { CartComponent } from './Components/cart/cart.component';
     SearchComponent,
     ProductComponent,
     CartComponent,
+    OrderComponent,
 
 
   ],

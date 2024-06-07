@@ -1,0 +1,175 @@
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+--
+-- Host: localhost    Database: onlineshop
+-- ------------------------------------------------------
+-- Server version	8.0.36
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `cartitems`
+--
+
+DROP TABLE IF EXISTS `cartitems`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cartitems` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `cartid` int NOT NULL,
+  `productid` int NOT NULL,
+  `quantity` int NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `idcartitems_UNIQUE` (`Id`),
+  KEY `productid_idx` (`productid`),
+  KEY `fk_cartid_cartitem_idx` (`cartid`),
+  CONSTRAINT `fk_cartid_cartitem` FOREIGN KEY (`cartid`) REFERENCES `carts` (`Id`),
+  CONSTRAINT `fk_productid_cartitem` FOREIGN KEY (`productid`) REFERENCES `products` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cartitems`
+--
+
+LOCK TABLES `cartitems` WRITE;
+/*!40000 ALTER TABLE `cartitems` DISABLE KEYS */;
+INSERT INTO `cartitems` VALUES (5,3,10,2),(22,3,15,1),(23,3,13,1),(24,3,9,1);
+/*!40000 ALTER TABLE `cartitems` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `carts`
+--
+
+DROP TABLE IF EXISTS `carts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `carts` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `Userid` int NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id_UNIQUE` (`Id`),
+  KEY `fk_userid_cart_idx` (`Userid`),
+  CONSTRAINT `fk_userid_cart` FOREIGN KEY (`Userid`) REFERENCES `users` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `carts`
+--
+
+LOCK TABLES `carts` WRITE;
+/*!40000 ALTER TABLE `carts` DISABLE KEYS */;
+INSERT INTO `carts` VALUES (3,16),(12,17);
+/*!40000 ALTER TABLE `carts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `orders` (
+  `Id` int unsigned NOT NULL AUTO_INCREMENT,
+  `UserId` int NOT NULL,
+  `ProductId` int NOT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `UserId_idx` (`UserId`),
+  KEY `ProductId_idx` (`ProductId`),
+  CONSTRAINT `fk_productid_order` FOREIGN KEY (`ProductId`) REFERENCES `products` (`Id`),
+  CONSTRAINT `fk_userid_order` FOREIGN KEY (`UserId`) REFERENCES `users` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orders`
+--
+
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `products`
+--
+
+DROP TABLE IF EXISTS `products`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `products` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `Name` varchar(45) NOT NULL,
+  `Description` varchar(45) DEFAULT NULL,
+  `Price` decimal(10,0) NOT NULL,
+  `Image` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id_UNIQUE` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `products`
+--
+
+LOCK TABLES `products` WRITE;
+/*!40000 ALTER TABLE `products` DISABLE KEYS */;
+INSERT INTO `products` VALUES (4,'string',NULL,0,NULL),(9,'name','description',30,NULL),(10,'gaming headphones','product description',70,'a1c318b3_71QEWj+ioXS._AC_SX679_.jpg'),(12,'product 1','description product',40,NULL),(13,'product 2','description product',40,NULL),(14,'product 3','description product',40,NULL),(15,'product 4','description product',40,NULL),(16,'product 5','description product',40,NULL);
+/*!40000 ALTER TABLE `products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `Username` varchar(45) NOT NULL,
+  `FirstName` varchar(45) NOT NULL,
+  `LastName` varchar(45) DEFAULT NULL,
+  `Email` varchar(45) NOT NULL,
+  `Address` varchar(45) NOT NULL,
+  `Phone_number` int DEFAULT NULL,
+  `Password` varchar(45) NOT NULL,
+  `Cartid` int DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Username_UNIQUE` (`Username`),
+  UNIQUE KEY `Id_UNIQUE` (`Id`),
+  UNIQUE KEY `Cartid_UNIQUE` (`Cartid`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (13,'stringtest','string','string','string','string',NULL,'RzKH+CmNunFjqJeQiVj3wOrnM+JdLgJ5kuou3JvtL6g=',NULL),(14,'stringtest2','string','string','string','string',0,'RzKH+CmNunFjqJeQiVj3wOrnM+JdLgJ5kuou3JvtL6g=',NULL),(16,'usertest123','userupdated','testuser','usertest@atest.com','usertestaddressupdatedaddress',777777798,'NEMvCmaa8vnc1uEFwyIW47tqaPrEis+Uy61ye31MQ2k=',3),(17,'usertest12','firstname22','lastname','testemail@usertest.com','addresstest',999333999,'jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=',12);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2024-06-07  2:47:30

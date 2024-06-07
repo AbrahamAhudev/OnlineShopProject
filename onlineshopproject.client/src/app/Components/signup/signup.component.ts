@@ -4,7 +4,8 @@ import { UserService } from '../../Services/User/user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-signup',

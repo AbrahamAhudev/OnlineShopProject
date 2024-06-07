@@ -14,6 +14,7 @@ import { UsereditComponent } from './Components/useredit/useredit.component';
 import { SearchComponent } from './Components/search/search.component';
 import { ProductComponent } from './Components/product/product.component';
 import { CartComponent } from './Components/cart/cart.component';
+import { OrderComponent } from './Components/order/order.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +27,7 @@ export const routes: Routes = [
   { path: 'user', component: UserComponent, canActivate: [GuestGuard] },
   { path: 'user/edit', component: UsereditComponent, canActivate: [GuestGuard] },
   { path: 'cart', component: CartComponent, canActivate: [GuestGuard] },
+  { path: 'cart/order', component: OrderComponent, canActivate: [GuestGuard] },
   { path: 'signup', component: SignupComponent },
   { path: 'user/changepwd', component: ChangePasswordComponent, canActivate: [GuestGuard]},
   { path: '**', component: ErrorComponent }

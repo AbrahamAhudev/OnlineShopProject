@@ -1,0 +1,50 @@
+<div class="main_content">
+
+  <div style="width=100%" id="order_container">
+
+
+    <form class="orderform" [formGroup]="orderForm">
+
+      <h1 style="font-size: 28px">Order</h1>
+
+      <div id="order_infobox">
+
+        <p>X products</p>
+        <p>X€</p>
+
+      </div>
+
+      <div class="row">
+        <div>
+          <label>Postal code *</label>
+          <input type="number" formControlName="postalcode" placeholder="Postal code" />
+        </div>
+
+        <div>
+          <label>Address *</label>
+          <input type="text" formControlName="address" placeholder="Address" />
+        </div>
+
+      </div>
+    
+
+      <div class="row">
+        <div>
+          <label>Email</label>
+          <p class="form_user_param">Email</p>
+        </div>
+
+        <div>
+          <label>Username</label>
+          <p class="form_user_param">Username</p>
+        </div>
+
+      </div>
+
+      <input type="submit" value="make order" />
+
+    </form>
+
+  </div>
+</div>
+

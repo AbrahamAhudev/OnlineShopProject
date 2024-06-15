@@ -74,7 +74,7 @@ namespace OnlineShopProject.Server.Controllers
                     Quantity = 1
                 };
                 
-
+                
                 _DataContext.CartItems.Add(cartItem);
 
                 _DataContext.SaveChanges();

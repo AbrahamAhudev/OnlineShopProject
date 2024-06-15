@@ -25,6 +25,7 @@ import { SearchComponent } from './Components/search/search.component';
 import { ProductComponent } from './Components/product/product.component';
 import { CartComponent } from './Components/cart/cart.component';
 import { OrderComponent } from './Components/order/order.component';
+import { OrdersComponent } from './Components/orders/orders.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { OrderComponent } from './Components/order/order.component';
     ProductComponent,
     CartComponent,
     OrderComponent,
+    OrdersComponent,
 
 
   ],

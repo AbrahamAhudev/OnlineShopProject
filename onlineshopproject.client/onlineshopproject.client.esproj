@@ -15,6 +15,7 @@
     <Folder Include="src\app\Guards\Auth\" />
     <Folder Include="src\app\Guards\Guest\" />
     <Folder Include="src\app\Services\AuthInterceptor\" />
+    <Folder Include="src\app\Services\Order\" />
     <Folder Include="src\app\Services\Product\" />
     <Folder Include="src\app\Services\User\" />
     <Folder Include="src\assets\images\products\" />

@@ -3,40 +3,37 @@
   <div style="width=100%" id="order_container">
 
 
-    <form class="orderform" [formGroup]="orderForm">
+    <form class="orderform" [formGroup]="orderForm" (ngSubmit)="onSubmit()">
 
       <h1 style="font-size: 28px">Order</h1>
 
       <div id="order_infobox">
 
-        <p>X products</p>
-        <p>X€</p>
+        <p>{{TotalQuantity}} products</p>
+        <p>{{OrderPrice}}€</p>
 
       </div>
 
-      <div class="row">
-        <div>
-          <label>Postal code *</label>
-          <input type="number" formControlName="postalcode" placeholder="Postal code" />
-        </div>
+      
+    
 
-        <div>
+        <div class="column">
           <label>Address *</label>
-          <input type="text" formControlName="address" placeholder="Address" />
+          <input type="text" formControlName="address" placeholder="Address" value="{{User.address}}" />
         </div>
 
-      </div>
+      
     
 
       <div class="row">
         <div>
           <label>Email</label>
-          <p class="form_user_param">Email</p>
+          <p class="form_user_param">{{User.email}}</p>
         </div>
 
         <div>
           <label>Username</label>
-          <p class="form_user_param">Username</p>
+          <p class="form_user_param">{{User.username}}</p>
         </div>
 
       </div>

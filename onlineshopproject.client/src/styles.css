@@ -28,7 +28,7 @@ body {
 }
 
 .nav_ul {
-  margin-left: 120px;
+
   display: flex;
   justify-content: center;
   flex-grow: 1; 
@@ -728,7 +728,9 @@ input[type="submit"],
   display: flex;
   column-gap: 15px;
   text-align: center;
+ 
 }
+
 
 #order_infobox {
   border-top: 1px solid black;
@@ -737,3 +739,31 @@ input[type="submit"],
   margin-bottom: 15px;
   background-color: #b7d8ed;
 }
+
+/*order styles*/
+
+.orders_content {
+  display: flex;
+  flex-flow: row;
+
+  background-color: rgb(225, 244, 255);
+
+}
+
+#orders{
+    background-color: #bfdcf5;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 300px;
+    height: 180px;
+    margin: 20px;
+}
+
+
+#orders button {
+    background-color: #fac6c6
+}
+
+  #orders button:hover {
+    background-color: #de3131
+  }

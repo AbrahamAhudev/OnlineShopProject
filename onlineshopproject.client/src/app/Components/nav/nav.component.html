@@ -5,6 +5,11 @@
   </div>
 
 
+  <div class="nav_btns">
+    <a *ngIf="isAuthenticated" [routerLink]="['/orders']" [routerLinkActive]="['active_btn']"> Orders</a>
+  </div>
+
+
   <div class="nav_ul">
     <ul>
       <li>
@@ -18,7 +23,7 @@
       </li>
     </ul>
   </div>
- 
+
 
   <div class="nav_btns">
     <a *ngIf="!isAuthenticated" [routerLink]="['/login']" [routerLinkActive]="['active_btn']">Log in</a>

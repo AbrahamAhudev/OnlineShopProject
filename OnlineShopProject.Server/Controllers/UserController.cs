@@ -18,14 +18,16 @@ namespace OnlineShopProject.Server.Controllers
         private readonly DataContext _DataContext;
         private readonly ICartRepository _CartRepository;
         private readonly ICartItemRepository _CartItemRepository;
+        private readonly IOrderRepository _OrderRepository;
 
 
-        public UserController(IUserRepository userRepository, DataContext context, ICartItemRepository cartItemRepository, ICartRepository cartrepository)
+        public UserController(IUserRepository userRepository, DataContext context, ICartItemRepository cartItemRepository, ICartRepository cartrepository, IOrderRepository orderRepository)
         {
             _UserRepository = userRepository;
             _DataContext = context;
             _CartItemRepository = cartItemRepository;
             _CartRepository = cartrepository;
+            _OrderRepository = orderRepository;
 
         }
 
@@ -215,11 +217,21 @@ namespace OnlineShopProject.Server.Controllers
                 return BadRequest(ModelState);
             }
 
+            List<Order> OrdersToDelete = _DataContext.Orders.Where(o => o.UserId  == UserId).ToList();
+
+            if (OrdersToDelete.Count > 0)
+            {
+                if (!_OrderRepository.DeleteOrdersOfUser(UserId))
+                {
+                    ModelState.AddModelError("", "something went wrong deleting the user");
+                }
+            }
+
             if(CartToDelete != null)
             {
                 if (!_CartRepository.DeleteCart(CartToDelete))
                 {
-                    ModelState.AddModelError("", "something went wrong deleting the user");
+                    ModelState.AddModelError("", "something went wrong deleting the cart");
                 }
                
             }

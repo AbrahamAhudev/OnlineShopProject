@@ -8,12 +8,13 @@ namespace OnlineShopProject.Server.Repository
     {
 
         private readonly DataContext _Context;
+        private readonly IOrderItemRepository _orderItemRepository;
 
-        public OrderRepository(DataContext dataContext)
+        public OrderRepository(DataContext dataContext, IOrderItemRepository orderItemRepository)
         {
 
             _Context = dataContext;
-
+            _orderItemRepository = orderItemRepository;
         }
 
         public bool CreateOrder(Order order)
@@ -25,7 +26,33 @@ namespace OnlineShopProject.Server.Repository
 
         public bool DeleteOrder(Order order)
         {
+
+            List<OrderItem> itemstodelete = _orderItemRepository.GetOrderItemsOfAnOrder(order.Id);
+
+            _Context.RemoveRange(itemstodelete);
+
             _Context.Remove(order);
+
+
+            return Save();
+        }
+
+        public bool DeleteOrdersOfUser(int userid)
+        {
+
+            List<Order> OrdersToDelete = _Context.Orders.Where(o => o.UserId == userid).ToList();
+
+
+            foreach (Order Order in OrdersToDelete)
+            {
+                
+                List<OrderItem> itemsToDelete = _Context.OrderItems.Where(oi => oi.OrderId == Order.Id).ToList();
+
+          
+                _Context.OrderItems.RemoveRange(itemsToDelete);
+            }
+
+            _Context.RemoveRange(OrdersToDelete);
 
             return Save();
         }

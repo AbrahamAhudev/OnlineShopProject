@@ -42,7 +42,7 @@ CREATE TABLE `cartitems` (
 
 LOCK TABLES `cartitems` WRITE;
 /*!40000 ALTER TABLE `cartitems` DISABLE KEYS */;
-INSERT INTO `cartitems` VALUES (76,3,13,1),(77,3,10,1),(78,3,16,1),(79,3,15,1);
+INSERT INTO `cartitems` VALUES (77,3,10,1),(78,3,16,1),(79,3,15,1);
 /*!40000 ALTER TABLE `cartitems` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,7 +69,7 @@ CREATE TABLE `carts` (
 
 LOCK TABLES `carts` WRITE;
 /*!40000 ALTER TABLE `carts` DISABLE KEYS */;
-INSERT INTO `carts` VALUES (13,13),(3,16),(12,17);
+INSERT INTO `carts` VALUES (3,16),(12,17);
 /*!40000 ALTER TABLE `carts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,7 +100,7 @@ CREATE TABLE `orderitems` (
 
 LOCK TABLES `orderitems` WRITE;
 /*!40000 ALTER TABLE `orderitems` DISABLE KEYS */;
-INSERT INTO `orderitems` VALUES (71,43,14,1),(72,43,15,1),(73,44,15,1),(74,44,13,1),(79,46,10,1),(80,46,15,1),(81,46,16,1),(83,48,13,2),(84,48,10,1);
+INSERT INTO `orderitems` VALUES (79,46,10,1),(80,46,15,1),(81,46,16,1),(83,48,13,2),(84,48,10,1);
 /*!40000 ALTER TABLE `orderitems` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,7 +128,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (43,13,'asdfasdf'),(44,13,'addresstest'),(46,16,'usertestaddressupdatedaddress'),(48,16,'addresstest');
+INSERT INTO `orders` VALUES (46,16,'usertestaddressupdatedaddress'),(48,16,'addresstest');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,6 +161,61 @@ INSERT INTO `products` VALUES (4,'string',NULL,0,NULL),(9,'name','description',3
 UNLOCK TABLES;
 
 --
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `roles` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `roles`
+--
+
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (2,'administrator'),(1,'seller');
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `userroles`
+--
+
+DROP TABLE IF EXISTS `userroles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `userroles` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `userid` int NOT NULL,
+  `roleid` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_userid_userrole_idx` (`userid`),
+  KEY `fk_roleid_userrole_idx` (`roleid`),
+  CONSTRAINT `fk_roleid_userrole` FOREIGN KEY (`roleid`) REFERENCES `roles` (`id`),
+  CONSTRAINT `fk_userid_userrole` FOREIGN KEY (`userid`) REFERENCES `users` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `userroles`
+--
+
+LOCK TABLES `userroles` WRITE;
+/*!40000 ALTER TABLE `userroles` DISABLE KEYS */;
+INSERT INTO `userroles` VALUES (3,16,2),(17,17,2),(18,19,2);
+/*!40000 ALTER TABLE `userroles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -181,7 +236,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `Username_UNIQUE` (`Username`),
   UNIQUE KEY `Id_UNIQUE` (`Id`),
   UNIQUE KEY `Cartid_UNIQUE` (`Cartid`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -190,7 +245,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (13,'stringtest','string','string','string','string',NULL,'RzKH+CmNunFjqJeQiVj3wOrnM+JdLgJ5kuou3JvtL6g=',13),(14,'stringtest2','string','string','string','string',0,'RzKH+CmNunFjqJeQiVj3wOrnM+JdLgJ5kuou3JvtL6g=',NULL),(16,'usertest123','userupdated','testuser','usertest@atest.com','usertestaddressupdatedaddress',777777798,'OtNhk27Z742DXXRa3yTXGRhueE7G/ppSXusARYg9X5E=',3),(17,'usertest12','firstname22','lastname','testemail@usertest.com','addresstest',999333999,'jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=',12);
+INSERT INTO `users` VALUES (14,'stringtest2','string','string','string','string',0,'RzKH+CmNunFjqJeQiVj3wOrnM+JdLgJ5kuou3JvtL6g=',NULL),(16,'usertest123','userupdated','testuser','usertest@atest.com','usertestaddressupdatedaddress',777777798,'OtNhk27Z742DXXRa3yTXGRhueE7G/ppSXusARYg9X5E=',3),(17,'usertest12','firstname22','lastname','testemail@usertest.com','addresstest',999333999,'jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=',12),(18,'user','user','user','user@user.user','user',NULL,'4XLFZU28EteM4YUKT3lWum5aPSrEDwkl/G1pHrtU9r8=',NULL),(19,'admin','admin','','admin@admin.com','addresstest',NULL,'jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -203,4 +258,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-15 17:52:07
+-- Dump completed on 2024-06-23 16:38:14

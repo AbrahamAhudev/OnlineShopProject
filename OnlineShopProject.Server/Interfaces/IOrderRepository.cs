@@ -16,6 +16,8 @@ namespace OnlineShopProject.Server.Interfaces
 
         bool DeleteOrder(Order order);
 
+        bool DeleteOrdersOfUser(int userid);
+
         bool Save();
     }
 }

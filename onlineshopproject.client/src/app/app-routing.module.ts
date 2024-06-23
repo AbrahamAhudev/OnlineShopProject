@@ -16,6 +16,8 @@ import { ProductComponent } from './Components/product/product.component';
 import { CartComponent } from './Components/cart/cart.component';
 import { OrderComponent } from './Components/order/order.component';
 import { OrdersComponent } from './Components/orders/orders.component';
+import { AdminGuard } from './Guards/Admin/admin.guard';
+import { AdminpageComponent } from './Components/adminpage/adminpage.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,6 +34,7 @@ export const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'user/changepwd', component: ChangePasswordComponent, canActivate: [GuestGuard] },
   { path: 'orders', component: OrdersComponent, canActivate: [GuestGuard] },
+  { path: 'admin', component: AdminpageComponent, canActivate: [AdminGuard] },
   { path: '**', component: ErrorComponent }
 ];
 

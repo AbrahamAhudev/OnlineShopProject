@@ -1,5 +1,6 @@
 <nav class="navbar">
 
+
   <div class="nav_btns">
     <a *ngIf="isAuthenticated" [routerLink]="['/cart']" [routerLinkActive]="['active_btn']"> Cart</a>
   </div>
@@ -7,6 +8,10 @@
 
   <div class="nav_btns">
     <a *ngIf="isAuthenticated" [routerLink]="['/orders']" [routerLinkActive]="['active_btn']"> Orders</a>
+  </div>
+
+  <div class="nav_btns">
+    <a  *ngIf="isAdmin"  [routerLink]="['/admin']" [routerLinkActive]="['active_btn']">Admin</a>
   </div>
 
 

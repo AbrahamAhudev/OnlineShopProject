@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 body {
-  background-color: #bcebd1;
+  background-color: rgb(225, 244, 255);
   width: 100%;
   height: 100%;
   padding: 0;
@@ -767,3 +767,83 @@ input[type="submit"],
   #orders button:hover {
     background-color: #de3131
   }
+
+  /*admin page styles*/
+
+.content_adminusers {
+    text-align: center;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+
+  background-color: rgb(225, 244, 255);
+  width: 100%;
+}
+
+
+.admin-users {
+  display: flex;
+  flex-flow: row;
+  width: 530px;
+  height: 60px;
+  background-color: aliceblue;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 5px;
+  align-items: center;
+}
+
+#users_admin_userinfo {
+  display: flex;
+  flex-flow: row;
+  width: 400px;
+}
+
+.admin-users p {
+  margin-left: 15px;
+}
+
+.admin-users button {
+  font-size: 12px;
+  text-align: center;
+  justify-content: right;
+  width: 55px;
+  height: 49px;
+  margin-left: 5px;
+  margin-rigth: 5px;
+}
+
+#users_admin_btns {
+  display: flex;
+  flex-flow: row;
+}
+
+#users_admin_delete{
+    background-color: #ff7373;
+}
+
+#users_admin_delete:hover {
+  background-color: #ff3e3e;
+}
+
+
+#users_admin_giveadmin {
+  background-color: #d4ffae;
+}
+
+  #users_admin_giveadmin:hover {
+    background-color: #a2f193;
+  }
+
+#users_admin_content {
+}
+
+#users_admin_removeadmin{
+    background-color: #ee926f;
+    width: 60px;
+}
+
+#users_admin_removeadmin:hover {
+  background-color: #fa9b4a
+}

@@ -1,0 +1,26 @@
+<div class="main_content">
+  <div style="width=100%" class="content_adminusers">
+
+    <h1 style="text-decoration: underline">Admin page</h1>
+    <h2>Users:</h2>
+    <div id="users_admin_content">
+
+
+      <div *ngFor="let user of Users" class="admin-users">
+
+        <div id="users_admin_userinfo">
+          <p>{{user.username}}</p>
+          <p>{{user.email}}</p>
+        </div>
+
+        <div id="users_admin_btns">
+
+          <button *ngIf="isAdmin( user.id )" (click)="RemoveRole( user.id )" id="users_admin_removeadmin">Remove admin</button>
+          <button *ngIf="!isAdmin( user.id )" (click)="giveAdmin( user.id )" id="users_admin_giveadmin">Give admin</button>
+          <button (click)="deleteUser(user.id)" id="users_admin_delete">Delete user</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

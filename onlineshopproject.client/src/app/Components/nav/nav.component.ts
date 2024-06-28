@@ -13,7 +13,7 @@ export class NavComponent implements OnInit {
 
   public isAuthenticated: boolean = false;
   public isAdmin: boolean = false;
-
+  public isSeller: boolean = false;
 
   constructor(
     private _AuthService: AuthService,
@@ -27,6 +27,9 @@ export class NavComponent implements OnInit {
       this.isAdmin = isAdmin;
     });
 
+    this._RoleService.isSeller().subscribe(isSeller => {
+      this.isSeller = isSeller
+    })
    
   }
 

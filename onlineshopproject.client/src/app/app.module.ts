@@ -27,6 +27,8 @@ import { CartComponent } from './Components/cart/cart.component';
 import { OrderComponent } from './Components/order/order.component';
 import { OrdersComponent } from './Components/orders/orders.component';
 import { AdminpageComponent } from './Components/adminpage/adminpage.component';
+import { SellerComponent } from './Components/seller/seller.component';
+import { CreateproductComponent } from './Components/createproduct/createproduct.component';
 
 
 @NgModule({
@@ -50,6 +52,8 @@ import { AdminpageComponent } from './Components/adminpage/adminpage.component';
     OrderComponent,
     OrdersComponent,
     AdminpageComponent,
+    SellerComponent,
+    CreateproductComponent,
 
 
   ],

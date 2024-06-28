@@ -1,4 +1,5 @@
-﻿using OnlineShopProject.Server.Models;
+﻿using OnlineShopProject.Server.DTOs;
+using OnlineShopProject.Server.Models;
 
 
 namespace OnlineShopProject.Server.Interfaces
@@ -18,6 +19,8 @@ namespace OnlineShopProject.Server.Interfaces
         bool UpdateProduct(Product Product);
 
         bool DeleteProduct(Product Product);
+
+        bool DeleteProducts(List<Product> Products);
 
         bool Save();
     }

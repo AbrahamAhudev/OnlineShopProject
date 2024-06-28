@@ -11,7 +11,11 @@
   </div>
 
   <div class="nav_btns">
-    <a  *ngIf="isAdmin"  [routerLink]="['/admin']" [routerLinkActive]="['active_btn']">Admin</a>
+    <a *ngIf="isAdmin" [routerLink]="['/admin']" [routerLinkActive]="['active_btn']">Admin</a>
+  </div>
+
+  <div class="nav_btns">
+    <a *ngIf="isSeller" [routerLink]="['/seller']" [routerLinkActive]="['active_btn']">Seller</a>
   </div>
 
 

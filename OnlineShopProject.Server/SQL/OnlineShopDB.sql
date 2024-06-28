@@ -33,7 +33,7 @@ CREATE TABLE `cartitems` (
   KEY `fk_cartid_cartitem_idx` (`cartid`),
   CONSTRAINT `fk_cartid_cartitem` FOREIGN KEY (`cartid`) REFERENCES `carts` (`Id`),
   CONSTRAINT `fk_productid_cartitem` FOREIGN KEY (`productid`) REFERENCES `products` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `cartitems` (
 
 LOCK TABLES `cartitems` WRITE;
 /*!40000 ALTER TABLE `cartitems` DISABLE KEYS */;
-INSERT INTO `cartitems` VALUES (77,3,10,1),(78,3,16,1),(79,3,15,1);
+INSERT INTO `cartitems` VALUES (77,3,10,1),(79,3,15,1);
 /*!40000 ALTER TABLE `cartitems` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,7 +60,7 @@ CREATE TABLE `carts` (
   UNIQUE KEY `Id_UNIQUE` (`Id`),
   KEY `fk_userid_cart_idx` (`Userid`),
   CONSTRAINT `fk_userid_cart` FOREIGN KEY (`Userid`) REFERENCES `users` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +69,7 @@ CREATE TABLE `carts` (
 
 LOCK TABLES `carts` WRITE;
 /*!40000 ALTER TABLE `carts` DISABLE KEYS */;
-INSERT INTO `carts` VALUES (3,16),(12,17);
+INSERT INTO `carts` VALUES (3,16),(12,17),(14,19);
 /*!40000 ALTER TABLE `carts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,7 +91,7 @@ CREATE TABLE `orderitems` (
   KEY `fk_productid_orderitem_idx` (`productid`),
   CONSTRAINT `fk_orderid_orderitem` FOREIGN KEY (`orderid`) REFERENCES `orders` (`Id`),
   CONSTRAINT `fk_productid_orderitem` FOREIGN KEY (`productid`) REFERENCES `products` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +100,7 @@ CREATE TABLE `orderitems` (
 
 LOCK TABLES `orderitems` WRITE;
 /*!40000 ALTER TABLE `orderitems` DISABLE KEYS */;
-INSERT INTO `orderitems` VALUES (79,46,10,1),(80,46,15,1),(81,46,16,1),(83,48,13,2),(84,48,10,1);
+INSERT INTO `orderitems` VALUES (79,46,10,1),(80,46,15,1),(83,48,13,2),(84,48,10,1),(85,49,10,1);
 /*!40000 ALTER TABLE `orderitems` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,7 +119,7 @@ CREATE TABLE `orders` (
   UNIQUE KEY `Id_UNIQUE` (`Id`),
   KEY `UserId_idx` (`UserId`),
   CONSTRAINT `fk_userid_order` FOREIGN KEY (`UserId`) REFERENCES `users` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +128,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (46,16,'usertestaddressupdatedaddress'),(48,16,'addresstest');
+INSERT INTO `orders` VALUES (46,16,'usertestaddressupdatedaddress'),(48,16,'addresstest'),(49,19,'addresstest');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,9 +145,12 @@ CREATE TABLE `products` (
   `Description` varchar(45) DEFAULT NULL,
   `Price` decimal(10,0) NOT NULL,
   `Image` varchar(45) DEFAULT NULL,
+  `Userid` int DEFAULT NULL,
   PRIMARY KEY (`Id`),
-  UNIQUE KEY `Id_UNIQUE` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `Id_UNIQUE` (`Id`),
+  KEY `fk_userid_product_idx` (`Userid`),
+  CONSTRAINT `fk_userid_product` FOREIGN KEY (`Userid`) REFERENCES `users` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,7 +159,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (4,'string',NULL,0,NULL),(9,'name','description',30,NULL),(10,'gaming headphones','product description',70,'a1c318b3_71QEWj+ioXS._AC_SX679_.jpg'),(12,'product 1','description product',40,NULL),(13,'product 2','description product',40,NULL),(14,'product 3','description product',40,NULL),(15,'product 4','description product',40,NULL),(16,'product 5','description product',40,NULL);
+INSERT INTO `products` VALUES (9,'name','description',30,NULL,NULL),(10,'gaming headphones','product description',70,'a1c318b3_71QEWj+ioXS._AC_SX679_.jpg',NULL),(12,'product 1','description product',40,NULL,NULL),(13,'product 2','description product',40,NULL,NULL),(14,'product 3','description product',40,NULL,NULL),(15,'product 4','description product',40,NULL,NULL),(16,'product','description',20,NULL,20),(17,'product2','desc2',30,NULL,20);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -202,7 +205,7 @@ CREATE TABLE `userroles` (
   KEY `fk_roleid_userrole_idx` (`roleid`),
   CONSTRAINT `fk_roleid_userrole` FOREIGN KEY (`roleid`) REFERENCES `roles` (`id`),
   CONSTRAINT `fk_userid_userrole` FOREIGN KEY (`userid`) REFERENCES `users` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -211,7 +214,7 @@ CREATE TABLE `userroles` (
 
 LOCK TABLES `userroles` WRITE;
 /*!40000 ALTER TABLE `userroles` DISABLE KEYS */;
-INSERT INTO `userroles` VALUES (3,16,2),(17,17,2),(18,19,2);
+INSERT INTO `userroles` VALUES (18,19,2),(25,20,1);
 /*!40000 ALTER TABLE `userroles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -236,7 +239,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `Username_UNIQUE` (`Username`),
   UNIQUE KEY `Id_UNIQUE` (`Id`),
   UNIQUE KEY `Cartid_UNIQUE` (`Cartid`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -245,7 +248,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (14,'stringtest2','string','string','string','string',0,'RzKH+CmNunFjqJeQiVj3wOrnM+JdLgJ5kuou3JvtL6g=',NULL),(16,'usertest123','userupdated','testuser','usertest@atest.com','usertestaddressupdatedaddress',777777798,'OtNhk27Z742DXXRa3yTXGRhueE7G/ppSXusARYg9X5E=',3),(17,'usertest12','firstname22','lastname','testemail@usertest.com','addresstest',999333999,'jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=',12),(18,'user','user','user','user@user.user','user',NULL,'4XLFZU28EteM4YUKT3lWum5aPSrEDwkl/G1pHrtU9r8=',NULL),(19,'admin','admin','','admin@admin.com','addresstest',NULL,'jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=',NULL);
+INSERT INTO `users` VALUES (14,'stringtest2','string','string','string','string',0,'RzKH+CmNunFjqJeQiVj3wOrnM+JdLgJ5kuou3JvtL6g=',NULL),(16,'usertest123','userupdated','testuser','usertest@atest.com','usertestaddressupdatedaddress',777777798,'OtNhk27Z742DXXRa3yTXGRhueE7G/ppSXusARYg9X5E=',3),(17,'usertest12','firstname22','lastname','testemail@usertest.com','addresstest',999333999,'jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=',12),(18,'user','user','user','user@user.user','user',NULL,'4XLFZU28EteM4YUKT3lWum5aPSrEDwkl/G1pHrtU9r8=',NULL),(19,'admin','admin','','admin@admin.com','addresstest',NULL,'jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=',14),(20,'seller','seller','','seller@seller.com','addresstest',NULL,'jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -258,4 +261,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-23 16:38:14
+-- Dump completed on 2024-06-28 16:02:10

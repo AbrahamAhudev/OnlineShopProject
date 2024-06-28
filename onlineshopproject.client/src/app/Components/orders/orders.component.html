@@ -4,7 +4,7 @@
     <h1>Orders</h1>
 
     <h2 *ngIf="Loaded == false && Orders == null">Loading orders</h2>
-    <h2 *ngIf="Loaded == true && Orders == null">Orders not found</h2>
+    <h2 *ngIf="Loaded == true && Orders?.length === 0">Orders not found</h2>
 
     <div class="orders_content">
       <div *ngFor="let order of Orders" id="orders">

@@ -1,0 +1,41 @@
+<div class="main_content">
+
+  <div style="width=100%" class="createproduct_content">
+
+
+    <form class="productform" [formGroup]="ProductForm" (ngSubmit)="CreateProduct()">
+
+      <h1 style="font-size: 28px">Create a Product</h1>
+
+      <div class="column">
+        <label>Name *</label>
+        <input type="text" formControlName="name" placeholder="Name" />
+      </div>
+
+      <div class="column">
+        <label>Price *</label>
+        <input type="number" formControlName="price" placeholder="price" />
+      </div>
+
+
+
+
+
+      <div class=" column" id="createproduct_description">
+        <label>Description</label>
+        <textarea type="text" formControlName="description" placeholder="Description"></textarea>
+      </div>
+
+      <div class=" column" id="createproduct_img">
+        <label>Image</label>
+        <input type="file" formControlName="image" (change)="onFileChange($event)">
+      </div>
+
+
+
+      <input type="submit" value="Create Product" [disabled]="ProductForm.invalid" />
+
+    </form>
+  </div>
+</div>
+

@@ -2,6 +2,7 @@
 using OnlineShopProject.Server.Interfaces;
 using OnlineShopProject.Server.Models;
 using OnlineShopProject.Server.Data;
+using OnlineShopProject.Server.DTOs;
 
 namespace OnlineShopProject.Server.Repository
 {
@@ -18,9 +19,9 @@ namespace OnlineShopProject.Server.Repository
             _Context = context;
         }
 
-        public bool CreateProduct(Product Product)
+        public bool CreateProduct(Product NewProduct)
         {
-            _Context.Add(Product);
+            _Context.Add(NewProduct);
 
             return Save();
         }
@@ -28,6 +29,13 @@ namespace OnlineShopProject.Server.Repository
         public bool DeleteProduct(Product Product)
         {
             _Context.Remove(Product);
+
+            return Save();
+        }
+
+        public bool DeleteProducts(List<Product> Products)
+        {
+            _Context.RemoveRange(Products);
 
             return Save();
         }

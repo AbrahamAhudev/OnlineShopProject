@@ -18,6 +18,9 @@ import { OrderComponent } from './Components/order/order.component';
 import { OrdersComponent } from './Components/orders/orders.component';
 import { AdminGuard } from './Guards/Admin/admin.guard';
 import { AdminpageComponent } from './Components/adminpage/adminpage.component';
+import { SellerComponent } from './Components/seller/seller.component';
+import { SellerGuard } from './Guards/Seller/seller.guard';
+import { CreateproductComponent } from './Components/createproduct/createproduct.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -35,6 +38,8 @@ export const routes: Routes = [
   { path: 'user/changepwd', component: ChangePasswordComponent, canActivate: [GuestGuard] },
   { path: 'orders', component: OrdersComponent, canActivate: [GuestGuard] },
   { path: 'admin', component: AdminpageComponent, canActivate: [AdminGuard] },
+  { path: 'seller', component: SellerComponent, canActivate: [SellerGuard] },
+  { path: 'seller/product', component: CreateproductComponent, canActivate: [SellerGuard] },
   { path: '**', component: ErrorComponent }
 ];
 

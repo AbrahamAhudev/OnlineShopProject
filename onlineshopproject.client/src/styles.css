@@ -438,7 +438,8 @@ input[type="submit"],
 #product_imgname h1 {
   margin-top: 0;
   background-color: #ccd8e4;
-  width: 140px;
+  min-width: 140px;
+  max-width: 320px;
   padding: 30px;
   border: 1px solid black;
   border-radius: 10px;
@@ -506,6 +507,15 @@ input[type="submit"],
   flex-flow: row;
 }
 
+#delete_product_btn{
+    margin: 10px;
+    cursor: pointer;
+    background-color: #e85c5c
+}
+
+#delete_product_btn:hover {
+  background-color: #d92b2b
+}
 
 /*cart page styles*/
 
@@ -836,14 +846,118 @@ input[type="submit"],
     background-color: #a2f193;
   }
 
+#users_admin_giveseller {
+  background-color: #8581dc;
+}
+
+  #users_admin_giveseller:hover {
+    background-color: #613ddd;
+  }
+
 #users_admin_content {
 }
 
-#users_admin_removeadmin{
+#users_admin_removerole{
     background-color: #ee926f;
     width: 60px;
 }
 
-#users_admin_removeadmin:hover {
+#users_admin_removerole:hover {
   background-color: #fa9b4a
 }
+
+/*seller page styles*/
+
+#create_product_content{
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color:aliceblue;
+    width: 150px;
+    height: 150px;
+    margin: 5px;
+    padding: 5px;
+}
+
+  #create_product_content button{
+      background-color: #81c770
+  }
+
+  #create_product_content button:hover {
+    background-color: #33a81c
+  }
+
+  #seller_products_content {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+/*create product page styles*/
+
+.productform {
+  display: flex;
+  align-items: center;
+
+  flex-flow: column;
+  background-color: #a3c6e1;
+  border: 1px solid black;
+  margin: 13px;
+  padding: 10px;
+  padding-left: 60px;
+  padding-right: 60px;
+  border-radius: 10px;
+  max-width: 320px;
+  height: 485px;
+  max-height: 560px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.createproduct_content {
+  text-align: center;
+  background-color: rgb(225, 244, 255);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.productform .column {
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+}
+
+#createproduct_description{
+    margin: 10px;
+}
+
+  #createproduct_description label{
+      margin-bottom: 5px;
+  }
+
+  #createproduct_description textarea {
+    resize: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #e4f2fe;
+    width: 240px;
+    height:  80px;
+  }
+
+
+  #createproduct_img {
+    margin: 12px;
+  }
+
+#createproduct_img label{
+  margin-bottom: 10px;
+}
+
+  #createproduct_img input {
+    border: 1px solid black;
+    border-radius: 5px;
+    display: inline-block;
+    background-color: aliceblue;
+    padding: 9px 12px;
+    cursor: pointer;
+  }

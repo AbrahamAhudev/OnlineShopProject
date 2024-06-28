@@ -15,8 +15,10 @@
 
         <div id="users_admin_btns">
 
-          <button *ngIf="isAdmin( user.id )" (click)="RemoveRole( user.id )" id="users_admin_removeadmin">Remove admin</button>
-          <button *ngIf="!isAdmin( user.id )" (click)="giveAdmin( user.id )" id="users_admin_giveadmin">Give admin</button>
+          <button *ngIf="isAdmin( user.id )" (click)="RemoveRole( user.id )" id="users_admin_removerole">Remove admin</button>
+          <button *ngIf="isSeller( user.id )" (click)="RemoveRole( user.id )" id="users_admin_removerole">Remove Seller</button>
+          <button *ngIf="!isAdmin( user.id ) && !isSeller( user.id )" (click)="CreateRole( user.id, 2 )" id="users_admin_giveadmin">Give admin</button>
+          <button *ngIf="!isAdmin( user.id ) && !isSeller( user.id )" (click)="CreateRole( user.id, 1 )" id="users_admin_giveseller">Give seller</button>
           <button (click)="deleteUser(user.id)" id="users_admin_delete">Delete user</button>
 
         </div>

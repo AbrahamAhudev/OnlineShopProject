@@ -17,12 +17,15 @@ namespace OnlineShopProject.Server.Controllers
         private readonly IProductRepository _ProductRepository;
         private readonly ICartItemRepository _CartItemRepository;
         private readonly DataContext _DataContext;
+        private readonly IOrderItemRepository _OrderItemRepository;
 
-        public ProductController(IProductRepository productRepository, ICartItemRepository cartItemRepository, DataContext context)
+        public ProductController(IProductRepository productRepository, ICartItemRepository cartItemRepository, DataContext context, IOrderItemRepository orderItemRepository)
         {
             _ProductRepository = productRepository;
             _CartItemRepository = cartItemRepository;
             _DataContext = context;
+            _OrderItemRepository = orderItemRepository;
+
         }
 
 
@@ -33,6 +36,23 @@ namespace OnlineShopProject.Server.Controllers
         {
             var Products = _ProductRepository.GetProducts();
 
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            return Ok(Products);
+        }
+
+        [HttpGet("user/{UserId}")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Product>))]
+        [ProducesResponseType(400)]
+
+        public IActionResult GetProductsOfUser(int UserId)
+        {
+
+            var Products = _DataContext.Products.Where(p => p.UserId == UserId).ToList();
 
             if (!ModelState.IsValid)
             {
@@ -108,7 +128,7 @@ namespace OnlineShopProject.Server.Controllers
                 Name = NewProductDTO.Name,
                 Description = NewProductDTO.Description,
                 Price = NewProductDTO.Price,
-
+                UserId = NewProductDTO.UserId
             };
 
             if (NewProductDTO.Image != null)
@@ -141,7 +161,8 @@ namespace OnlineShopProject.Server.Controllers
             return Ok("product successfully created");
         }
 
-        [HttpPut("{ProductId}")]
+
+    [HttpPut("{ProductId}")]
         [ProducesResponseType(400)]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
@@ -167,8 +188,7 @@ namespace OnlineShopProject.Server.Controllers
                 Name = UpdatedProductDTO.Name,
                 Description = UpdatedProductDTO.Description,
                 Price = UpdatedProductDTO.Price,
-                
-
+                UserId = UpdatedProductDTO.UserId
             };
 
             string filename = null;
@@ -240,6 +260,13 @@ namespace OnlineShopProject.Server.Controllers
                 }
             }
 
+            var OrderItemsToDelete = _DataContext.OrderItems.Where(oi => oi.ProductId == ProductId).ToList();
+
+            if (!_OrderItemRepository.DeleteOrderItems(OrderItemsToDelete))
+            {
+                ModelState.AddModelError("", "something went wrong deleting the order items");
+            }
+
             if (!_ProductRepository.DeleteProduct(ProductToDelete))
             {
                 ModelState.AddModelError("", "something went wrong deleting the product");
@@ -283,6 +310,7 @@ namespace OnlineShopProject.Server.Controllers
 
             return uniqueFileName;
         }
+
 
 
     }

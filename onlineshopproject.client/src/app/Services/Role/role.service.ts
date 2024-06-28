@@ -49,6 +49,22 @@ export class RoleService {
   }
 
 
+
+  isSeller(): Observable<boolean> {
+    const decodedToken = this.getDecodedToken();
+    if (!decodedToken) {
+      return of(false);
+    }
+    const username = decodedToken.sub;
+
+    return this._UserService.getUserByUsername(username).pipe(
+      switchMap(user => this.getUserRole(user.id)),
+      map(role => role.roleId === 1),
+      catchError(() => of(false))
+    );
+  }
+
+
   public CreateRole(UserId: number, roleId: number): Observable<any> {
 
 

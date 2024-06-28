@@ -1,0 +1,35 @@
+<div class="main_content">
+
+  <div style="width=100%" class="content">
+    <h1 style="text-decoration: underline">Seller page</h1>
+    <h2 *ngIf="loaded == true && products.length > 0">your products:</h2>
+    <h2 *ngIf="loaded == true && products.length == 0">You have no products</h2>
+
+    <div id="seller_products_content">
+
+      <div id="products">
+
+        <div (click)="productclick( product.id )" id="product" *ngFor="let product of products">
+
+          <img *ngIf="product.image == null" id="products-img" src="../../../assets/images/main-qimg-1a4bafe2085452fdc55f646e3e31279c-lq.jpg" />
+          <img *ngIf="product.image != null" id="products-img" src="../../../assets/images/products/{{product.image}}" />
+
+          <p>{{product.name}}</p>
+
+
+          <p id="product_price">{{product.price}}€</p>
+        </div>
+
+      </div>
+
+
+      <div id="create_product_content">
+        <h3>Create Product</h3>
+        <button (click)="CreateProduct()">Create Product</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

@@ -66,6 +66,14 @@ export class AdminpageComponent implements OnInit {
  
   }
 
+  isSeller(userId: number): boolean {
+    if (this.adminRoles[userId] == 1) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   RemoveRole(userId: number) {
 
     this._RoleService.DeleteRole(userId).subscribe(
@@ -93,12 +101,12 @@ export class AdminpageComponent implements OnInit {
 
   }
 
-  giveAdmin(userId: number) {
-    this._RoleService.CreateRole(userId, 2).subscribe(
+  CreateRole(userId: number, RoleId: number) {
+    this._RoleService.CreateRole(userId, RoleId).subscribe(
       response => {
         Swal.fire({
           icon: "success",
-          text: "user is now an admin"
+          text: "role assigned successfully"
         }).then(() => {
           window.location.reload();
         });

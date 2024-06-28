@@ -19,15 +19,22 @@ namespace OnlineShopProject.Server.Controllers
         private readonly ICartRepository _CartRepository;
         private readonly ICartItemRepository _CartItemRepository;
         private readonly IOrderRepository _OrderRepository;
+        private readonly IProductRepository _ProductRepository;
 
 
-        public UserController(IUserRepository userRepository, DataContext context, ICartItemRepository cartItemRepository, ICartRepository cartrepository, IOrderRepository orderRepository)
+        public UserController(IUserRepository userRepository,
+            DataContext context,
+            ICartItemRepository cartItemRepository,
+            ICartRepository cartrepository,
+            IOrderRepository orderRepository,
+            IProductRepository productRepository)
         {
             _UserRepository = userRepository;
             _DataContext = context;
             _CartItemRepository = cartItemRepository;
             _CartRepository = cartrepository;
             _OrderRepository = orderRepository;
+            _ProductRepository = productRepository;
 
         }
 
@@ -212,12 +219,16 @@ namespace OnlineShopProject.Server.Controllers
 
             Cart CartToDelete = _DataContext.Carts.Where(c => c.UserId == UserId).FirstOrDefault();
 
+            var ProductsToDelete = _DataContext.Products.Where(p => p.UserId == UserId).ToList();
+
+            List<Order> OrdersToDelete = _DataContext.Orders.Where(o => o.UserId == UserId).ToList();
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            List<Order> OrdersToDelete = _DataContext.Orders.Where(o => o.UserId  == UserId).ToList();
+           
 
             if (OrdersToDelete.Count > 0)
             {
@@ -234,6 +245,14 @@ namespace OnlineShopProject.Server.Controllers
                     ModelState.AddModelError("", "something went wrong deleting the cart");
                 }
                
+            }
+
+            if(ProductsToDelete.Count > 0)
+            {
+                if (!_ProductRepository.DeleteProducts(ProductsToDelete))
+                {
+                    ModelState.AddModelError("", "something went wrong deleting the products of the user");
+                }
             }
 
             if (!_UserRepository.DeleteUser(UserToDelete))

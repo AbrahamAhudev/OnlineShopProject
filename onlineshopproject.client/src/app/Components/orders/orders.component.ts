@@ -50,6 +50,8 @@ export class OrdersComponent implements OnInit {
                 this.Orders = response
                 this.Loaded = true
 
+                console.log(response)
+
                 this.Orders?.forEach(order => {
                   this._OrderService.GetTotalPriceOfOrder(order.id).subscribe(
                     totalprice => {

@@ -26,6 +26,10 @@ export class ProductService {
     return this._http.get(this.url + 'api/Product/' + id);
   }
 
+  GetRecentProducts(): Observable<any> { 
+    return this._http.get(this.url + 'api/Product/latests')
+  }
+
   GetProductsOfUser(UserId: number): Observable<any> {
     return this._http.get(this.url + 'api/Product/user/' + UserId);
   }

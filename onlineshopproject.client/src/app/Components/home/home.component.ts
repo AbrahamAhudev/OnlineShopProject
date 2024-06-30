@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Product } from '../../Models/Product';
 import { ProductService } from '../../Services/Product/product.service';
 
 @Component({
@@ -10,12 +11,26 @@ import { ProductService } from '../../Services/Product/product.service';
 export class HomeComponent implements OnInit {
 
   public SearchString: string
-  constructor(private _router: Router) {
+  public Products: Product[]
+  constructor(private _router: Router,
+    private _ProductService: ProductService) {
     this.SearchString = '';
+    this.Products = []
   }
 
   ngOnInit() {
+    this._ProductService.GetRecentProducts().subscribe(
+      response => {
+        this.Products = response
+      },
+      error => {
+        console.log(error)
+      }
+    )
+  }
+  productclick(productId: Number) {
 
+    this._router.navigate(['products/' + productId])
   }
 
   Search() {

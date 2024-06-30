@@ -83,6 +83,27 @@ namespace OnlineShopProject.Server.Controllers
             return Ok(Product);
         }
 
+        [HttpGet("latests")]
+        [ProducesResponseType(200, Type = typeof(Product))]
+        [ProducesResponseType(400)]
+
+        public IActionResult Getlatestproducts()
+        {
+
+            var products = _DataContext.Products
+                .OrderByDescending(p => p.Id)
+                 .Take(5)
+                 .ToList();
+    
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            return Ok(products);
+        }
+
+
         [HttpGet("search/{searchstring}")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Product>))]
         [ProducesResponseType(400)]

@@ -51,7 +51,7 @@ namespace OnlineShopProject.Server
             {
                 options.AddPolicy("AppPolicy", app =>
                 {
-                    app.WithOrigins("https://localhost:4200")
+                    app.AllowAnyOrigin()
                     .AllowAnyHeader()
                     .AllowAnyMethod();
                 });

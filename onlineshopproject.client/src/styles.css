@@ -11,8 +11,9 @@ body {
 
 .header {
   background-color: white;
-  border-top: solid 4px #465fc2;
-  text-align: center;
+  border-top: solid 4px #4182ad;
+  /*border-top: solid 4px #465fc2;
+  */text-align: center;
   border-bottom: solid 1px black;
 }
 
@@ -20,8 +21,8 @@ body {
 /*navbar*/
 
 .navbar {
-  background: rgb(2,0,36);
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(118,182,235,1) 0%, rgba(172,222,251,1) 100%);
+  /*background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(118,182,235,1) 0%, rgba(172,222,251,1) 100%);*/
+  background-color: #444444;
   display: flex;
   align-items: center;
   padding: 10px;
@@ -48,6 +49,7 @@ body {
 .navbar a {
   text-decoration: none;
   font-weight: bold;
+  color: white
 }
 
   .navbar a:hover {
@@ -67,7 +69,7 @@ body {
 
 .active {
   text-shadow: 1px 3px 3px rgba(0,0,0,0.53);
-  color: aliceblue;
+  color: #7d9abe !important;
 }
 
 .nav_btns a {
@@ -205,17 +207,6 @@ body {
   color: #dc5050;
   font-size: 15px;
 }
-/*sidebar styles*/
-
-.sidebar {
-  border-left: 1px solid black;
-  text-align: center;
-  background: rgb(2,0,36);
-  background: linear-gradient(266deg, rgba(2,0,36,1) 0%, rgba(114,149,169,1) 0%, rgba(146,201,232,1) 100%);
-  width: 20%;
-  display: flex;
-  justify-content: center;
-}
 
 /*buttons and input type text default styles*/
 
@@ -270,8 +261,18 @@ input[type="submit"],
   }
 }
 
+/*sidebar styles*/
 
-/*sidebar*/
+.sidebar {
+  border-left: 1px solid black;
+  text-align: center;
+
+  background: linear-gradient(266deg, rgba(2,0,36,1) 0%, rgba(114,149,169,1) 0%, rgba(146,201,232,1) 100%);
+  width: 20%;
+  display: flex;
+  justify-content: center;
+}
+
 
 .sidebar div {
   background-color: #a3c6e1;
@@ -303,7 +304,8 @@ input[type="submit"],
 .footer {
   line-height: 30px;
   height: 60px;
-  background-color: #99beeb;
+  /*background-color: #99beeb;*/
+  background-color: #444444;
   margin: auto;
   padding: 0;
   border-top: 1px solid black;
@@ -311,6 +313,7 @@ input[type="submit"],
 
   .footer p {
     margin-left: 15px;
+    color: white;
   }
 
 /*user page styles*/
@@ -438,8 +441,6 @@ input[type="submit"],
 #product_imgname h1 {
   margin-top: 0;
   background-color: #ccd8e4;
-  min-width: 140px;
-  max-width: 320px;
   padding: 30px;
   border: 1px solid black;
   border-radius: 10px;
@@ -650,7 +651,7 @@ input[type="submit"],
 #home_box{
     background-color: aliceblue;
     width: 500px;
-    height: 230px;
+    height: 380px;
     border: 1px solid black;
     border-radius: 10px;
     padding: 10px;

@@ -651,7 +651,7 @@ input[type="submit"],
 #home_box{
     background-color: aliceblue;
     width: 500px;
-    height: 380px;
+    height: 480px;
     border: 1px solid black;
     border-radius: 10px;
     padding: 10px;
@@ -666,11 +666,10 @@ input[type="submit"],
   width: 100%;
 }
 
-#home_imgs{
+.home_imgs{
     display: flex;
     flex-flow: row;
     justify-content: center;
-
 }
 
 

@@ -1,22 +1,22 @@
 <div class="main_content">
   <div style="width=100%" class="content">
 
-    <h1>user page</h1>
+    <h1 style="font-size: 25px; text-decoration: underline">user page</h1>
 
     <div id="user_page_container">
 
       <ul>
-        <li>Username: {{ this.User?.username }}</li>
-        <li>Firstname: {{ this.User?.firstName }}</li>
-        <li>Lastname: {{ this.User?.lastName }}</li>
-        <li>Address: {{ this.User?.address }}</li>
-        <li>Phone number: {{ this.User?.phone_number }}</li>
-        <li>Email: {{ this.User?.email }}</li>
+        <li><b class="user_page_line">Username:</b> {{ this.User?.username }}</li>
+        <li><b class="user_page_line">Firstname:</b> {{ this.User?.firstName }}</li>
+        <li><b class="user_page_line">Lastname:</b> {{ this.User?.lastName }}</li>
+        <li><b class="user_page_line">Address:</b> {{ this.User?.address }}</li>
+        <li><b class="user_page_line">Phone number:</b> {{ this.User?.phone_number }}</li>
+        <li> <b>Email: </b>{{ this.User?.email }}</li>
       </ul>
     </div>
 
     <div class="User_btns">
-    <button id="pwd_btn" (click)="pwdchange()">Change Password</button>
+    <button id="pwd_btn" (click)="pwdchange()">Change Password <img height="15" src="../../../assets/images/password.png"/></button>
     <button id="useredit_btn" (click)="edituser()">Edit user <img height="15" src="../../../assets/images/84380.png"/></button>
   </div>
     

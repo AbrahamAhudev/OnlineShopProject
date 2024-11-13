@@ -1,20 +1,21 @@
 <div class="main_content">
 
   <div style="width=100%" class="content">
-    <h1>Orders</h1>
+    <h1 style="font-size: 30px; text-decoration: underline">Orders</h1>
 
     <h2 *ngIf="Loaded == false && Orders == null">Loading orders</h2>
     <h2 *ngIf="Loaded == true && Orders?.length === 0">Orders not found</h2>
 
     <div class="orders_content">
       <div *ngFor="let order of Orders" id="orders">
+        <b>
+          <p>Id: {{order.id}}</p>
 
-        <p>Id: {{order.id}}</p>
+          <p>Order Price: {{ TotalPrices[order.id]}}€</p>
 
-        <p>Order Price: {{ TotalPrices[order.id]}}€</p>
-
-        <p>Items in order: {{ Quantities[order.id]}}</p>
-
+          <p>Items in order: {{ Quantities[order.id]}}</p>
+        </b>
+       
         <button (click)="CancelOrder( order.id )">Cancel order</button>
 
       </div>

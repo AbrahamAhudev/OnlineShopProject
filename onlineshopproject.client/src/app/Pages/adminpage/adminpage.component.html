@@ -1,15 +1,18 @@
 <div class="main_content">
   <div style="width=100%" class="content_adminusers">
 
-    <h1 style="text-decoration: underline">Admin page</h1>
-    <h2>Users:</h2>
+    <h1  style="font-size: 25px; text-decoration: underline">Admin page</h1>
+    <div id="adminusers_page_text">
+      <h2 style="font-size: 20px">Users:</h2>
+    </div>
+    
     <div id="users_admin_content">
 
 
       <div *ngFor="let user of Users" class="admin-users">
 
         <div id="users_admin_userinfo">
-          <p>{{user.username}}</p>
+          <p><b>{{user.username}}</b></p>
           <p>{{user.email}}</p>
         </div>
 

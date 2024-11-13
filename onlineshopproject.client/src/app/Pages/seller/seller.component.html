@@ -1,8 +1,11 @@
 <div class="main_content">
 
   <div style="width=100%" class="content">
-    <h1 style="text-decoration: underline">Seller page</h1>
-    <h2 *ngIf="loaded == true && products.length > 0">your products:</h2>
+    <h1 style="font-size: 30px; text-decoration: underline">Seller page</h1>
+    <div id="seller_page_text">
+      <h2 id="seller_products_h2" *ngIf="loaded == true && products.length > 0">your products:</h2>
+    </div>
+   
     <h2 *ngIf="loaded == true && products.length == 0">You have no products</h2>
 
     <div id="seller_products_content">

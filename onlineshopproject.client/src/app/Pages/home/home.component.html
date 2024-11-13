@@ -6,6 +6,7 @@
     <div id="home_box">
 
         <h2 style="font-size: 20px; text-decoration: underline">Project made with:</h2>
+        
         <h2 style="font-size: 20px">-Angular 15 <br /> -.NET 8 <br /> -ASP.NET <br /> -Entity Framework Core <br /> -MySql</h2>
 
         <div class="home_imgs">
@@ -31,7 +32,7 @@
         <img *ngIf="product.image == null" id="products-img" src="../../../assets/images/main-qimg-1a4bafe2085452fdc55f646e3e31279c-lq.jpg" />
         <img *ngIf="product.image != null" id="products-img" src="../../../assets/images/products/{{product.image}}" />
 
-        <p>{{product.name}}</p>
+        <p><b>{{product.name}}</b></p>
 
 
         <p id="product_price">{{product.price}}€</p>
